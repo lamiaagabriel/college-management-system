@@ -35,7 +35,12 @@ export class AllCoursesTableComponent {
   }
 
   onDelete(ssn: string) {
-    console.log('Delete');
-    console.log(ssn);
+    this.api.delete('courses',ssn).subscribe((data: any) => {
+      if (data.errors) {
+        console.log('Error');
+        return;
+      }
+    });
+    location.reload();
   }
 }

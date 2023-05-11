@@ -15,4 +15,7 @@ export class ApiService {
     console.log(options);
     return this._http.post(`http://localhost:3000/api/${url}`, options);
   }
+  delete(url: string, id: string) {
+    return this._http.delete(`http://localhost:3000/api/${url}/${id}`);
+  }
 }
