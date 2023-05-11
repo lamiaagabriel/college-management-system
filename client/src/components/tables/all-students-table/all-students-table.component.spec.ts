@@ -21,3 +21,4 @@ describe('AllStudentsTableComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ 

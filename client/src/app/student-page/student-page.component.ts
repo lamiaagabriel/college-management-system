@@ -74,7 +74,6 @@ export class StudentPageComponent implements OnInit {
       this.dataSource = new MatTableDataSource<PeriodicElement>(secondTerm);
     }
   }
-
   // function for calculating the grade
   calGrade(grade: any) {
     if (grade >= 85) return 'Excellent';

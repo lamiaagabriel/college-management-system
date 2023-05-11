@@ -1,7 +1,6 @@
 .image{ grid-area: image; text-align: center;}
 .data{ grid-area: data; vertical-align: middle;}
 .grades{ grid-area: grades; }
-
 .container{
     display: grid;
     grid-template:

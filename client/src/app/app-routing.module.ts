@@ -6,6 +6,7 @@ import { StudentsComponent } from './students/students.component';
 import { StudentProfileComponent } from '@/pages/students/student-profile/student-profile.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ProfessorsComponent } from './professors/professors.component';
+import { StudentPageComponent } from './student-page/student-page.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'professors', component: ProfessorsComponent },
   { path: 'students', component: StudentsComponent },
   { path: 'students/:id', component: StudentProfileComponent },
+  { path: 'StudentPage', component: StudentPageComponent },
 ];
 
 @NgModule({

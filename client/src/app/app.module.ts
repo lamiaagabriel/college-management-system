@@ -34,14 +34,9 @@ import {
 } from '@/components/tables';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentPageComponent } from './student-page/student-page.component';
-import { RouterModule, Routes } from '@angular/router';
 
 // Services
 
-
-const appRoute: Routes = [
-  { path: 'StudentPage', component: StudentPageComponent },
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +70,6 @@ const appRoute: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoute),
   ],
   providers: [],
   bootstrap: [AppComponent],
