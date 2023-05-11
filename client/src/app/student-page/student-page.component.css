@@ -1,0 +1,125 @@
+.image{ grid-area: image; text-align: center;}
+.data{ grid-area: data; vertical-align: middle;}
+.grades{ grid-area: grades; }
+
+.container{
+    display: grid;
+    grid-template:
+    'image data data data data data'
+    'image data data data data data'
+    'grades grades grades grades grades grades';
+}
+.container > div {
+    padding: 20px;
+    font-size: 30px;
+}
+.image img{
+    border-radius: 200px;
+    width: 200px;
+    height: 200px;
+}
+.personal-info p{
+    margin: 1vh;
+}
+.personal-info .id{
+    grid-area: stuID;
+}
+.personal-info .address{
+    grid-area: stuAddress;
+}
+.personal-info .year{
+    grid-area: stuYear;
+}
+.personal-info .email{
+    grid-area: stuEmail;
+}
+.personal-info .status{
+    grid-area: stuStatus;
+}
+.personal-info .example{
+    grid-area: stuFees;
+}
+.personal-info .specialist{
+    grid-area: stuSpecialist;
+}
+.personal-info .gender{
+    grid-area: stuGender;
+}
+.personal-info .dob{
+    grid-area: stuDOB;
+}
+.personal-info{
+    display: grid;
+    justify-content: space-between;
+    grid-template: 
+    'stuID stuAddress stuAddress stuAddress'
+    'stuYear stuEmail stuEmail stuEmail'
+    'stuGender stuDOB stuFees stuFees'
+    'stuSpecialist stuSpecialist stuSpecialist stuSpecialist';
+    font-size: 25px;
+}
+.data .stu-name{
+    margin-bottom: 30px;
+}
+.personal-info .head{
+    opacity: 0.5;
+}
+
+.grades header{
+    text-align: right;
+}
+.grades header mat-button-toggle-group{
+    margin-right: 30px;
+    height: 50px;
+    
+}
+.image, .data{
+    background-color: rgb(203, 202, 202);
+}
+.grades header{
+    margin-top: -20px;
+}
+
+/* Response */
+@media screen and (max-width: 1090px) {
+    .personal-info{
+        grid-template: 
+        'stuID stuYear'
+        'stuAddress stuAddress'
+        'stuEmail stuEmail'
+        'stuGender stuDOB'
+        'stuSpecialist stuSpecialist'
+        'stuFees stuFees';
+        font-size: 25px;
+    }
+}
+@media screen and (max-width: 820px) {
+    .container{
+        grid-template:
+        'image'
+        'data'
+        'grades';
+    }
+    .grades header{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 550px) {
+    .personal-info{
+        grid-template: 
+        'stuID stuID'
+        'stuAddress stuAddress'
+        'stuEmail stuEmail'
+        'stuSpecialist stuSpecialist'
+        'stuYear stuFees'
+        'stuGender stuDOB'
+        ;
+        font-size: 20px;
+    }
+    .data .stu-name{
+        font-size: 25px;
+    }
+    .grades header{
+        flex-direction: column;
+    }
+}

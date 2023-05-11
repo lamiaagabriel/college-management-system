@@ -5,6 +5,7 @@ import {Student} from '@/server/types/api'
 import { MatTableDataSource } from '@angular/material/table';
 import { EditStudentDialogComponent } from '@/components/dialogs/edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class AllStudentsTableComponent {
   ];
   dataSource: any;
 
-  constructor(private api: ApiService,public dialog: MatDialog) {}
+  constructor(private api: ApiService,public dialog: MatDialog, private router: Router) {}
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngOnInit() {
@@ -74,5 +75,8 @@ export class AllStudentsTableComponent {
       }
     });
     location.reload();
+  }
+  onShow(ssn: any){
+    this.router.navigate(['/StudentPage'], { state: { ssn: ssn } });
   }
 }

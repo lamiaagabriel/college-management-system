@@ -1,0 +1,75 @@
+<div class="container">
+  
+    <div class="image">
+      <img [src]="studentInfo.image" alt="photo">
+    </div>
+    <div class="data">
+      <p class="stu-name">{{studentInfo.name}}</p>
+      <div class="personal-info">
+        <p class="id"><span class="head">ID</span> &nbsp; {{studentInfo.ID}}</p>
+        <p class="address"><span class="head">Address</span> &nbsp; {{studentInfo.address}}</p>
+        <p class="year"><span class="head">Academic year</span> &nbsp; {{studentInfo.academicYear}}</p>
+        <p class="email"><span class="head">Email</span> &nbsp; {{studentInfo.email}}</p>
+        <mat-checkbox [checked]="studentInfo.fees" class="example-margin" [disabled]="true"><span style="font-size: 30px; color: black;">Fees</span></mat-checkbox>
+        <p class="specialist"><span class="head">Specialist</span> &nbsp; {{studentInfo.specialist}}</p>
+        <p class="gender"><span class="head">Gender</span> &nbsp; {{studentInfo.gender}}</p>
+        <p class="dob"><span class="head">DOB</span> &nbsp; {{studentInfo.DOB}}</p>
+        <!-- <p class="dob"><span class="head">DOB</span> &nbsp; {{(studentInfo.DOB.getUTCDate() + 1) + 
+          "/" + studentInfo.DOB.getUTCMonth()  + "/" + studentInfo.DOB.getUTCFullYear()}}</p> -->
+      </div>
+      
+    </div>
+  <div class="grades">
+    <header>
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle [(class)]="toggleChecked[0]" (click)="changeCheck1()" value="first term">1st term</mat-button-toggle>
+        <mat-button-toggle [(class)]="toggleChecked[1]" (click)="changeCheck2()" value="second term">2nd term</mat-button-toggle>
+      </mat-button-toggle-group>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Academic Year</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="selectYear()">
+          <!-- <mat-option>None</mat-option> -->
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </header>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [hidden]="hide">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
+      <ng-container matColumnDef="subjectName">
+        <th mat-header-cell *matHeaderCellDef> Subject </th>
+        <td mat-cell *matCellDef="let element"> {{element.subjectName}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="subjectID">
+        <th mat-header-cell *matHeaderCellDef> Subject ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.subjectID}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="grade">
+        <th mat-header-cell *matHeaderCellDef> Grade </th>
+        <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Percentage">
+        <th mat-header-cell *matHeaderCellDef> Percentage(%) </th>
+        <td mat-cell *matCellDef="let element"> {{element.Percentage}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
