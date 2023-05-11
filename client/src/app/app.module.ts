@@ -28,6 +28,7 @@ import {
   AddCourseDialogComponent,
   AddProfessorDialogComponent,
   AddStudentDialogComponent,
+  EditStudentDialogComponent,
 } from '@/components/dialogs';
 import {
   AllCoursesTableComponent,
@@ -60,7 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddCourseDialogComponent,
     AddProfessorDialogComponent,
     AddStudentDialogComponent,
-
+    EditStudentDialogComponent,
     AllCoursesTableComponent,
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
