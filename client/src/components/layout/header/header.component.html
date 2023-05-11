@@ -1,0 +1,27 @@
+<header class="bg-gray-300">
+  <div class="container py-4 flex items-center justify-between mx-auto">
+    <img
+      src="https://cdn.hashnode.com/res/hashnode/image/upload/v1643004937711/k3NMskkSn.png"
+      width="50"
+      alt="Websitr logo"
+    />
+
+    <a
+      class="options"
+      *ngFor="let navLink of navLinks"
+      [routerLink]="navLink.to"
+      >{{ navLink.title }}</a
+    >
+
+    <div class="dropdown">
+      <button class="bg-green-500 hover:bg-green-600 rounded-full h-10">
+        Welcome {{ username }}
+      </button>
+      <div class="dropdown-content hover:block">
+        <label class="text-gray-500 text-sm">ID: {{ id }}</label
+        ><br />
+        <a href="" class="text-base text-gray-800"> Log out</a>
+      </div>
+    </div>
+  </div>
+</header>

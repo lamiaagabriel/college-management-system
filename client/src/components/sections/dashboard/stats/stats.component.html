@@ -1,0 +1,15 @@
+<section>
+  <div class="container py-4 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-4">
+    <div
+      class="stat py-4 bg-white rounded border border-gray-200 shadow p-4 flex justify-center items-center gap-4"
+      *ngFor="let stat of stats"
+    >
+      <div class="wrap">
+        <span class="mb-5 block font-mono text-xl text-gray-600">{{
+          stat.title
+        }}</span>
+        <a mat-stroked-button [routerLink]="stat.to">More Details</a>
+      </div>
+    </div>
+  </div>
+</section>
