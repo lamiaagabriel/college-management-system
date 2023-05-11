@@ -78,31 +78,56 @@ router.post("/", async (req, res) => {
 // }
 // });
 
-// router.delete('/:ssn', async (req, res) => {
-//   let ssn = Number.parseInt(req.params.ssn);
-//   try {
-//     const professorquery = `Delete from PROFESSOR Where SSN = "${ssn}"`
-//     connection.query(professorquery, (err, rows) => {
-//       if (err) throw err;
-//     });
+router.delete('/:ssn', async (req, res) => {
+  let ssn = req.params?.ssn;
+  if (ssn)
+  {
+    //deleting from passwords and professors table
+    try {
+      await db.deleteOne({
+        table: "PASSWORDS",
+        where : {SSN : ssn}
+      })
+      const message = await db.deleteOne({
+        table: "professors",
+        where : {ssn : ssn}
+      })
+      res.status(200).json({
+        results: message,
+        errors: null,
+      })
+    } catch (err) {
+      res.status(500).json({
+        results: err.message,
+        errors: null,
+      })
+    }
+  }
 
-//     const Passwordquery = `Delete from PASSWORDS Where SSN = "${ssn}" `
-//         connection.query(Passwordquery, (err, rows) => {
-//       if (err) console.log(err);
-//     });
 
-//     res.status(200).json({
-//       results: 'Deleted Successfully.',
-//       errors: null,
-//     });
+  // try {
+    // const professorquery = `Delete from PROFESSOR Where SSN = "${ssn}"`
+    // connection.query(professorquery, (err, rows) => {
+    //   if (err) throw err;
+    // });
 
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       results: null,
-//       errors: 'Professors Error',
-//     });
-//   }
-// });
+  //   const Passwordquery = `Delete from PASSWORDS Where SSN = "${ssn}" `
+  //       connection.query(Passwordquery, (err, rows) => {
+  //     if (err) console.log(err);
+  //   });
+
+  //   res.status(200).json({
+  //     results: 'Deleted Successfully.',
+  //     errors: null,
+  //   });
+
+  // } catch (error) {
+  //   console.log(error);
+  //   res.status(500).json({
+  //     results: null,
+  //     errors: 'Professors Error',
+  //   });
+  // }
+});
 
 export default router
