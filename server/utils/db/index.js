@@ -1,12 +1,7 @@
 import mysql from "mysql2/promise"
 
 // Database Connection
-export const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "college-management-system",
-})
+export const pool = mysql.createPool('mysql://ileucuvts7frv8w2vwl6:pscale_pw_IM5K6sBJHChVUvgd0VIoWJknK6nhbxDVpF6HjQWdb2v@aws.connect.psdb.cloud/collegesystem?ssl={"rejectUnauthorized":true}')
 
 import { findMany, findOne } from "./_read.js"
 import { createOne } from "./_create.js"

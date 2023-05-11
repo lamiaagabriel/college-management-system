@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-
 import { UploadImageService } from '@/services/upload-image/upload-image.service';
 
 @Component({
@@ -17,7 +16,8 @@ export class AddStudentDialogComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   constructor(
-    private matDialogRef: MatDialogRef<AddStudentDialogComponent> // private _uploadImageService: UploadImageService
+    private matDialogRef: MatDialogRef<AddStudentDialogComponent>,
+    private _uploadImageService: UploadImageService
   ) {}
   fullname: string | null = null;
   ssn: string | null = null;
@@ -48,18 +48,19 @@ export class AddStudentDialogComponent {
   }
 
   async onSubmit() {
+    /*
     // Uploading Image
     const img = this.PersonalPhoto[0];
     const data = new FormData();
     data.append('file', img);
     data.append('upload_preset', 'CollegeSystem');
     data.append('cloud_name', 'dnbruhgqr');
-    // this._uploadImageService.uploadImage(data).subscribe((res: any) => {
-    //   if (res) {
-    //     this.PersonalPhotoURL = res.secure_url;
-    //   }
-    // });
-
+    this._uploadImageService.uploadImage(data).subscribe((res: any) => {
+      if (res) {
+        this.PersonalPhotoURL = res.secure_url;
+      }
+    });
+    */
     // Setting request attribtues
     this.fullname = this.form.value.personDetails.fullname;
     this.ssn = this.form.value.personDetails.ssn;
@@ -71,26 +72,26 @@ export class AddStudentDialogComponent {
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
 
     // Sending request
-    // const res = await fetch('http://localhost:3001/student', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ssn: this.ssn,
-    //     name: this.fullname,
-    //     phone_number: this.phonenumber,
-    //     email: this.PersonEmail,
-    //     gender: this.PersonGender,
-    //     date_of_birth: new Date(),
-    //     academic_year: this.AcademicYear,
-    //     address: this.Address,
-    //     department: this.Department,
-    //     fees: this.FEES,
-    //     password: this.Password,
-    //     image: this.PersonalPhotoURL,
-    //   }),
-    // }).then((res) => res.json());
+    const res = await fetch('http://localhost:3000/api/students', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ssn: this.ssn,
+        name: this.fullname,
+        phone_number: this.phonenumber,
+        email: this.PersonEmail,
+        gender: this.PersonGender,
+        date_of_birth: new Date(),
+        academic_year: this.AcademicYear,
+        address: this.Address,
+        department: this.Department,
+        fees: this.FEES,
+        password: this.Password,
+        image: 'this.PersonalPhotoURL',
+      }),
+    }).then((res) => res.json());
     // this.form.reset();
   }
 

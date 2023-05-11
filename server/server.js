@@ -16,8 +16,8 @@ app.use(bodyParser.json())
 app.use(cors()) // to get req.body from one site only
 
 // Routes
-
 app.use("/api/students", studentsRouter)
+
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
