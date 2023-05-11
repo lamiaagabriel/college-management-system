@@ -1,1 +1,84 @@
-<p>all-professors-table works!</p>
+<div class="mt-4 shadow-md rounded-md overflow-hidden mat-elevation-z1">
+    <table mat-table [dataSource]="dataSource">
+      <!-- SSN Column -->
+      <ng-container matColumnDef="SSN">
+        <th mat-header-cell *matHeaderCellDef>SSN</th>
+        <td mat-cell *matCellDef="let element">{{ element.SSN }}</td>
+      </ng-container>
+  
+      <!-- Professor Column -->
+      <ng-container matColumnDef="Professor">
+        <th mat-header-cell *matHeaderCellDef>Personal Info</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="w-full inline-flex justify-start items-center grow gap-4"
+        >
+          <div class="w-20">
+            <img
+              [src]="
+                'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
+                element.PersonalPhotoURL +
+                '.jpg'
+              "
+              [alt]="element.Name"
+              class="aspect-square w-full object-cover object-center rounded-full"
+            />
+          </div>
+  
+          <div>
+            <h1 class="font-semibold">{{ element.Name }}</h1>
+            <p class="text-xs text-slate-400">
+              {{ element.Email }}
+            </p>
+            <p class="text-xs text-slate-400">
+              {{ element.PhoneNumber }}
+            </p>
+          </div>
+        </td>
+      </ng-container>
+  
+      <!-- Department Column -->
+      <ng-container matColumnDef="Department">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td mat-cell *matCellDef="let element">{{ element.Department }}</td>
+      </ng-container>
+  
+      <!-- Master Column -->
+      <ng-container matColumnDef="Master">
+        <th mat-header-cell *matHeaderCellDef>Master</th>
+        <td mat-cell *matCellDef="let element">{{ element.Master }}</td>
+      </ng-container>
+  
+      <!-- Date of Registration Column -->
+      <ng-container matColumnDef="RegistrationDate">
+        <th mat-header-cell *matHeaderCellDef>Date of Registration</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.DateOfBirth | date : "mediumDate" }}
+        </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="flex justify-center items-center gap-4">
+            <button mat-button (click)="onEdit(element.SSN)">Edit</button>
+            <button mat-button (click)="onDelete(element.SSN)" class="hover:bg-red-500">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+      class="pb-4"
+    >
+    </mat-paginator>
+  </div>
+  

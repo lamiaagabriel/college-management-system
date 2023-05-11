@@ -4,7 +4,7 @@ import cors from "cors"
 
 // import Routes
 import studentsRouter from "./routes/students.js"
-// import studentsRouter from './routes/students'
+import professorsRouter from './routes/professors.js'
 // import studentsRouter from './routes/students'
 
 const app = express()
@@ -18,6 +18,7 @@ app.use(cors()) // to get req.body from one site only
 // Routes
 
 app.use("/api/students", studentsRouter)
+app.use("/api/professors", professorsRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

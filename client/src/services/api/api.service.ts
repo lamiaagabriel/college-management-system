@@ -11,7 +11,8 @@ export class ApiService {
     return this._http.get(`http://localhost:3000/api/${url}`);
   }
 
-  post(url: string, ...options: any) {
+  post(url: string, options: object) {
+    console.log(options);
     return this._http.post(`http://localhost:3000/api/${url}`, options);
   }
 }

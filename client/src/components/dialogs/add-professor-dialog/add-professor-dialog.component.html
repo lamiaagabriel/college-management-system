@@ -1,1 +1,202 @@
-<p>add-professor-dialog works!</p>
+<div class="form">
+    <h2 id="registration">Adding Professor</h2>
+    <button mat-flat-button color="primary" onclick="document.getElementById('uploadphoto')?.click()"
+    class="uploadBut">Upload Photo</button>
+    
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+      <div ngModelGroup="personDetails" #personalDetail="ngModelGroup">
+        <div class="mb-4 mt-3">
+          <img [src]="ImgSrc" width="200" height="200"
+          class= "float-right overflow-visible rounded-full" >
+          <mat-label class="font-mono mt-2">Personal Photo: </mat-label>
+          <input id="uploadphoto" class="hidden" type="file" (change)="OnFileSelected($event)" />
+          
+        </div>
+        <mat-form-field class="Fullnamegroup" appearance="outline">
+          <mat-label>Full name</mat-label>
+          <input
+            matInput
+            type="text"
+            id="fullname"
+            name="fullname"
+            ngModel
+            required
+            #fname="ngModel"
+            pattern="[a-zA-Z ]*"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="ssngroup" appearance="outline">
+          <mat-label>SSN</mat-label>
+          <input
+            matInput
+            type="text"
+            id="ssn"
+            name="ssn"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="emailgroup">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            required
+            [(ngModel)]="PersonEmail"
+          />
+          <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
+        </mat-form-field>
+  
+        <mat-form-field class="phoneroup" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input
+            matInput
+            type="text"
+            id="phonenumber"
+            name="phonenumber"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="adressgroup" appearance="outline">
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            type="text"
+            id="Address"
+            name="Address"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+         <mat-form-field class="universitygroup" appearance="outline">
+          <mat-label>University</mat-label>
+          <input
+            matInput
+            type="text"
+            id="University"
+            name="university"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+        <mat-form-field class="phdgroup" appearance="outline">
+          <mat-label>Phd</mat-label>
+          <input
+            matInput
+            type="text"
+            id="Phd"
+            name="phd"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+        <mat-form-field class="mastergroup" appearance="outline">
+          <mat-label>Master</mat-label>
+          <input
+            matInput
+            type="text"
+            id="Master"
+            name="master"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+      </div>
+  
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Academic Year</mat-label>
+        <mat-select id="year" name="year" ngModel>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+  
+      <mat-form-field appearance="fill" class="dataofbirth">
+        <mat-label>Data of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          [formControl]="serializedDate"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="mr-4">
+        <mat-label>Department</mat-label>
+        <mat-select name="Department" ngModel>
+          <mat-option value="Preparatory">Preparatory</mat-option>
+          <mat-option value="Electrical Engineering-General"
+            >Electrical Engineering - General</mat-option
+          >
+          <mat-option value="Computer Engineering"
+            >Computer Engineering</mat-option
+          >
+          <mat-option value="Communication and Electronics engineering"
+            >Communication and Electronics engineering</mat-option
+          >
+          <mat-option value="Electrical Power Engineering"
+            >Electrical Power Engineering</mat-option
+          >
+          <mat-option value="Civil Engineering">Civil Engineering</mat-option>
+          <mat-option value="architecture Engineering"
+            >architecture Engineering</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+  
+      <label id="Gender" class="font-bold">Gender: </label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        [(ngModel)]="PersonGender"
+        name="gender"
+      >
+        <mat-radio-button *ngFor="let gender of genders" [value]="gender">
+          {{ gender }}
+        </mat-radio-button>
+      </mat-radio-group>
+  
+      <div>
+        <small *ngIf="personalDetail.invalid && personalDetail.touched"
+          >Some of the required fields does not have valid value.</small
+        >
+      </div>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        value="Submit"
+        id="btn"
+        [hidden]="!myForm.valid"
+      >
+        Add Professor
+      </button>
+      <button mat-raised-button disabled class="disabled" [hidden]="myForm.valid">
+        Add Professor
+      </button>
+      <p [class] = "response == '' ? 'hidden' : response == 'Error in creating data within Database.' ? 'text-red-400 visible' : 'hidden' "> {{response}}</p>
+      <button mat-raised-button color="primary" type="button" (click)="onClose()">
+        Close
+      </button>
+    </form>
+  </div>
+  
