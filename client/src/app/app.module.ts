@@ -15,6 +15,7 @@ import { ProfessorsComponent } from '@/pages/professors/professors.component';
 import { StudentsComponent } from '@/pages/students/students.component';
 import { StudentProfileComponent } from '@/pages/students/student-profile/student-profile.component';
 import { LoginComponent } from '@/pages/login/login.component';
+import { StudentPageComponent } from '@/pages/student-page/student-page.component';
 
 // Components
 import {
@@ -50,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     StudentsComponent,
     StudentProfileComponent,
     LoginComponent,
+    StudentPageComponent,
 
     // Components
     LayoutComponent,
