@@ -17,20 +17,22 @@ export class AddStudentDialogComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   constructor(
-    private matDialogRef: MatDialogRef<AddStudentDialogComponent> // private _uploadImageService: UploadImageService
+    private matDialogRef: MatDialogRef<AddStudentDialogComponent>,
+    private _uploadImageService: UploadImageService
   ) {}
+  
   fullname: string | null = null;
   ssn: string | null = null;
   phonenumber: string | null = null;
   PersonGender: string | null = null;
   PersonEmail: string | null = null;
-  AcademicYear: string | null = null;
+  AcademicYear: number | null = null;
   Department: string | null = null;
   Password: string | null = null;
   serializedDate = new FormControl(new Date().toISOString()); // this.serializedDate.value
   Address: string | null = null;
   fullData: boolean = true;
-  genders: string[] = ['Male', 'Female'];
+  genders: string[] = ['male', 'female'];
   FEES: boolean = false;
   PersonalPhoto: File[] = [];
   PersonalPhotoURL: string = '';
@@ -41,6 +43,7 @@ export class AddStudentDialogComponent {
   OnFileSelected(event: any) {
     this.PersonalPhoto.push(event.target.files[0]);
     const reader = new FileReader();
+
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (event: any) => {
       this.ImgSrc = event.target.result;
@@ -49,48 +52,50 @@ export class AddStudentDialogComponent {
 
   async onSubmit() {
     // Uploading Image
+
     const img = this.PersonalPhoto[0];
     const data = new FormData();
     data.append('file', img);
     data.append('upload_preset', 'CollegeSystem');
     data.append('cloud_name', 'dnbruhgqr');
-    // this._uploadImageService.uploadImage(data).subscribe((res: any) => {
-    //   if (res) {
-    //     this.PersonalPhotoURL = res.secure_url;
-    //   }
-    // });
+
+    this._uploadImageService.uploadImage(data).subscribe((res: any) => {
+      if (res) {
+        this.PersonalPhotoURL = res.secure_url;
+      }
+    });
 
     // Setting request attribtues
     this.fullname = this.form.value.personDetails.fullname;
     this.ssn = this.form.value.personDetails.ssn;
     this.phonenumber = this.form.value.personDetails.phonenumber;
     this.Address = this.form.value.personDetails.Address;
-    this.AcademicYear = this.form.value.year;
+    this.AcademicYear = +this.form.value.year;
     this.Department = this.form.value.Department;
     this.Password = this.form.value.Password;
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
 
     // Sending request
-    // const res = await fetch('http://localhost:3001/student', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     ssn: this.ssn,
-    //     name: this.fullname,
-    //     phone_number: this.phonenumber,
-    //     email: this.PersonEmail,
-    //     gender: this.PersonGender,
-    //     date_of_birth: new Date(),
-    //     academic_year: this.AcademicYear,
-    //     address: this.Address,
-    //     department: this.Department,
-    //     fees: this.FEES,
-    //     password: this.Password,
-    //     image: this.PersonalPhotoURL,
-    //   }),
-    // }).then((res) => res.json());
+    const res = await fetch('http://localhost:3000/api/students', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ssn: this.ssn,
+        name: this.fullname,
+        phone_number: this.phonenumber,
+        email: this.PersonEmail,
+        gender: this.PersonGender,
+        date_of_birth: this.serializedDate.value?.slice(0, 10),
+        academic_year: this.AcademicYear,
+        address: this.Address,
+        department: this.Department,
+        fees: this.FEES,
+        password: this.Password,
+        image: this.PersonalPhotoURL,
+      }),
+    }).then((res) => res.json());
     // this.form.reset();
   }
 
