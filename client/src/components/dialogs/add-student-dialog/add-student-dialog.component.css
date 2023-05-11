@@ -20,7 +20,7 @@ button[type="submit"] {
 .uploadBut {
   position: absolute;
   left: 169px;
-  top: 94px;
+  top: 90px;
 }
 button[type="submit"]:hover {
   background-color: #45a049;
@@ -30,7 +30,7 @@ button[type="submit"]:hover {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
-  width: 800px;
+  width: 850px;
   margin: 30px auto;
 }
 .ssngroup {
@@ -47,7 +47,7 @@ button[type="submit"]:hover {
   width: 240px;
 }
 .dataofbirth {
-  margin-right: 100px;
+  margin-right: 20px;
   margin-left: 20px;
 }
 input.ng-invalid.ng-touched {
