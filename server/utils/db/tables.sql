@@ -18,23 +18,33 @@ CREATE TABLE students (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
--- Add Values
-INSERT INTO 
-	students(ssn, name, email, phone_number, fees)
-VALUES
-	(1, "Lamiaa Gabriel", "lamiaamoname6@gmail.com", '01022184878', true), 
-	(2, "Lamiaa Gabriel", "lamiaamoname16@gmail.com", '01022184878', false),
-	(3, "Lamiaa Gabriel", "lamiaamoname62@gmail.com", '01022184878', true),
-	(4, "Lamiaa Gabriel", "lamiaamoname63@gmail.com", '01022184878', false),
-	(5, "Lamiaa Gabriel", "lamiaamoname64@gmail.com", '01022184878', true),
-	(6, "Lamiaa Gabriel", "lamiaamoname65@gmail.com", '01022184878', true)
-;
+------------------------- Courses
+CREATE TABLE `courses` (
+	`id` varchar(22) NOT NULL,
+	`name` varchar(150) NOT NULL,
+	`year` int NOT NULL,
+	`semester` int NOT NULL,
+	PRIMARY KEY (`id`)
+)
 
 
-
--- Update Values
-UPDATE categories
-SET title = 'New Value'
-WHERE title = 'Old Value'
-
+------------------------- Professors
+CREATE TABLE `professors` (
+	`id` varchar(22) NOT NULL,
+	`ssn` varchar(14) NOT NULL,
+	`name` varchar(50) NOT NULL,
+	`email` varchar(50) NOT NULL,
+	`phone_number` varchar(11),
+	`address` varchar(20),
+	`image` varchar(20),
+	`gender` enum('male', 'female') NOT NULL DEFAULT 'male',
+	`created_at` timestamp NULL DEFAULT current_timestamp(),
+	`updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`phd` varchar(200),
+	`master` varchar(200),
+	`university` varchar(200),
+	`department` varchar(150),
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `ssn` (`ssn`),
+	UNIQUE KEY `email` (`email`)
+) 

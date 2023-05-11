@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { ApiService } from '@/services/api/api.service';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import type { Student } from '../../../../../server/types/api';
 
 @Component({
   selector: 'app-all-professors-table',
@@ -10,29 +9,28 @@ import type { Student } from '../../../../../server/types/api';
 })
 export class AllProfessorsTableComponent {
   displayedColumns: string[] = [
-    'SSN',
-    'Professor',
-    'Department',
-    'Master',
-    'RegistrationDate',
-    'Actions',
+    'ssn',
+    'professor',
+    'department',
+    'master',
+    'created_at',
+    'actions',
   ];
   dataSource: any;
 
-  constructor(private api: HttpClient) {}
+  constructor(private api: ApiService) {}
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngOnInit() {
-    this.api.get('http://localhost:3001/professor').subscribe((data: any) => {
+    this.api.get('professors').subscribe((data: any) => {
       if (data.errors) {
         console.log('Error');
         return;
       }
 
-      console.log(data.results);
-      this.dataSource = new MatTableDataSource<Student[]>(data.results);
+      console.log(data);
+      this.dataSource = new MatTableDataSource<Professor[]>(data);
       this.dataSource.paginator = this.paginator;
-      console.log(data.results);
     });
   }
 
@@ -42,12 +40,24 @@ export class AllProfessorsTableComponent {
   }
 
   onDelete(ssn: string) {
-    this.api.delete(`http://localhost:3001/professor/${ssn}`).subscribe((data: any) => {
-      if (data.errors) {
-        console.log('Error');
-        return;
-      }
-      location.reload();
-    });
+    console.log('Delete');
+    console.log(ssn);
   }
+}
+
+interface Professor {
+  address: string;
+  created_at: Date;
+  department: string;
+  email: string;
+  gender: string;
+  id: string;
+  image: string;
+  master: string;
+  name: string;
+  phd: string;
+  phone_number: string;
+  ssn: string;
+  university: string;
+  updated_at: Date;
 }
