@@ -26,7 +26,7 @@ export class AddStudentDialogComponent {
   phonenumber: string | null = null;
   PersonGender: string | null = null;
   PersonEmail: string | null = null;
-  AcademicYear: number | null = null;
+  AcademicYear: string | null = null;
   Department: string | null = null;
   Password: string | null = null;
   serializedDate = new FormControl(new Date().toISOString()); // this.serializedDate.value
@@ -70,7 +70,7 @@ export class AddStudentDialogComponent {
     this.ssn = this.form.value.personDetails.ssn;
     this.phonenumber = this.form.value.personDetails.phonenumber;
     this.Address = this.form.value.personDetails.Address;
-    this.AcademicYear = +this.form.value.year;
+    this.AcademicYear = this.form.value.year;
     this.Department = this.form.value.Department;
     this.Password = this.form.value.Password;
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
