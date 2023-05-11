@@ -2,6 +2,7 @@ import { ApiService } from '@/services/api/api.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-students-table',
@@ -18,7 +19,7 @@ export class AllStudentsTableComponent {
   ];
   dataSource: any;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class AllStudentsTableComponent {
         return;
       }
 
-      console.log(data);
+      // console.log(data);
       this.dataSource = new MatTableDataSource<Student[]>(data);
       this.dataSource.paginator = this.paginator;
       console.log(this.dataSource);
@@ -43,6 +44,9 @@ export class AllStudentsTableComponent {
   onDelete(ssn: string) {
     console.log('Delete');
     console.log(ssn);
+  }
+  onShow(ssn: string) {
+    this.router.navigate(['/StudentPage'], { state: { ssn: ssn } });
   }
 }
 interface Student {

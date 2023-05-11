@@ -33,9 +33,15 @@ import {
   AllStudentsTableComponent,
 } from '@/components/tables';
 import { HttpClientModule } from '@angular/common/http';
+import { StudentPageComponent } from './student-page/student-page.component';
+import { RouterModule, Routes } from '@angular/router';
 
 // Services
 
+
+const appRoute: Routes = [
+  { path: 'StudentPage', component: StudentPageComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +67,7 @@ import { HttpClientModule } from '@angular/common/http';
     AllCoursesTableComponent,
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
+    StudentPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +75,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    RouterModule.forRoot(appRoute),
   ],
   providers: [],
   bootstrap: [AppComponent],

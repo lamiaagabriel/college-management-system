@@ -18,7 +18,7 @@
           <img
             [src]="
               'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
-              element.PersonalPhotoURL +
+              element.image +
               '.jpg'
             "
             [alt]="element.name"
@@ -72,6 +72,7 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
         <div class="flex justify-center items-center gap-4">
+          <button mat-button (click)="onShow(element.ssn)">Show</button>
           <button mat-button (click)="onEdit(element.ssn)">Edit</button>
           <button mat-button (click)="onDelete(element.ssn)">Delete</button>
         </div>
