@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'Header',
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  constructor(private router : Router){}
+
   navLinks: { to: string; title: string }[] = [
     { to: '/', title: 'Home' },
     { to: '/courses', title: 'Courses' },
@@ -16,4 +20,8 @@ export class HeaderComponent {
   username = 'Marwa';
   id = '12345';
   avatar: String = "https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/wukylecey7nxvowjn96d.jpg";
+
+  gohome(){
+    this.router.navigate(['/login']);
+  }
 }

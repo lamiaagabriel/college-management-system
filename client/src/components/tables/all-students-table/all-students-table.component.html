@@ -74,7 +74,8 @@
         <div class="flex justify-center items-center gap-4">
           <button mat-button (click)="onShow(element.ssn)">Show</button>
           <button mat-button (click)="onEdit(element.ssn)">Edit</button>
-          <button mat-button (click)="onDelete(element.ssn)">Delete</button>
+          <button mat-button (click)="onDelete(element.ssn)"
+          class="hover:bg-red-500">Delete</button>
         </div>
       </td>
     </ng-container>
