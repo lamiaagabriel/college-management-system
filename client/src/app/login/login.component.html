@@ -1,0 +1,36 @@
+<div class = " min-h-screen grid  place-items-center marg ">
+    <div class=" bg-white px-4 py-8 rounded-3xl hover:shadow-2xl">
+      <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+        <label class = 'font-bold text-xl'>Login in as:</label>
+
+      <div class="space-x-4">
+        <div>
+          <input  [(ngModel)]="datalabel" type="radio" id = "admin" name="Login as" value = Username>
+          <label class = 'font-bold text-l' for="admin"> Admin</label><br>
+
+          <input [(ngModel)]="datalabel" type="radio" id="user" name="Login as" value = SSN>
+          <label class = 'font-bold text-l' for="user"> User</label>
+        </div>
+      </div>
+
+
+
+    <div class="space-x-2 flex justify-between">
+      <label class = 'font-bold text-l' for="username"><b>{{datalabel}}</b></label>
+      <input [(ngModel)]="uname_id" type="text" placeholder="Enter {{datalabel}}" name="username" required="true">
+    </div>
+
+    <div class="space-x-2 flex justify-between">
+      <label class = 'font-bold text-l' for="psw" ><b>Password</b></label>
+      <input [(ngModel)]="password" type="password" placeholder="Enter Password" name ="pass" required="true">
+    </div>
+
+
+     
+<div class="flex justify-center mb-2">        <button type="submit" (click)="onSubmit()">Login</button>  </div>
+      </form> 
+    </div>
+  </div>
+  
+  
+  
