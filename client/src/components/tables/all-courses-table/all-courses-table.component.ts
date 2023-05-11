@@ -8,14 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './all-courses-table.component.html',
 })
 export class AllCoursesTableComponent {
-  displayedColumns: string[] = [
-    'ssn',
-    'course',
-    'department',
-    'master',
-    'created_at',
-    'actions',
-  ];
+  displayedColumns: string[] = ['course', 'year', 'semester', 'actions'];
   dataSource: any;
 
   constructor(private api: ApiService) {}
@@ -46,18 +39,8 @@ export class AllCoursesTableComponent {
 }
 
 interface Course {
-  address: string;
-  created_at: Date;
-  department: string;
-  email: string;
-  gender: string;
   id: string;
-  image: string;
-  master: string;
   name: string;
-  phd: string;
-  phone_number: string;
-  ssn: string;
-  university: string;
-  updated_at: Date;
+  year: string;
+  semester: string;
 }
