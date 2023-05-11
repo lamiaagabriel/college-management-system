@@ -40,7 +40,12 @@ export class AllStudentsTableComponent {
   }
 
   onDelete(ssn: string) {
-    console.log('Delete');
-    console.log(ssn);
+    this.api.delete('students',ssn).subscribe((data: any) => {
+      if (data.errors) {
+        console.log('Error');
+        return;
+      }
+    });
+    location.reload();
   }
 }
