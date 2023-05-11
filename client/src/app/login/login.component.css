@@ -1,0 +1,25 @@
+button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button:hover{
+    background-color: #328035;
+}
+
+button:active{
+    background-color: #265f28;
+}
+
+input[type=text],input[type=password] {
+    width: 300px;
+    margin-bottom: 8px;
+    height: 30px;
+}

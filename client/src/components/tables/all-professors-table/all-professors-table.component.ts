@@ -2,6 +2,8 @@ import { ApiService } from '@/services/api/api.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {Professor} from '@/server/types/api'
+
 
 @Component({
   selector: 'app-all-professors-table',
@@ -45,19 +47,3 @@ export class AllProfessorsTableComponent {
   }
 }
 
-interface Professor {
-  address: string;
-  created_at: Date;
-  department: string;
-  email: string;
-  gender: string;
-  id: string;
-  image: string;
-  master: string;
-  name: string;
-  phd: string;
-  phone_number: string;
-  ssn: string;
-  university: string;
-  updated_at: Date;
-}

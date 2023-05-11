@@ -2,6 +2,8 @@ import { ApiService } from '@/services/api/api.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {Course} from '@/server/types/api'
+
 
 @Component({
   selector: 'app-all-courses-table',
@@ -36,11 +38,4 @@ export class AllCoursesTableComponent {
     console.log('Delete');
     console.log(ssn);
   }
-}
-
-interface Course {
-  id: string;
-  name: string;
-  year: string;
-  semester: string;
 }

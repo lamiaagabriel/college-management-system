@@ -8,37 +8,42 @@ declare global {
 }
 
 export interface Student {
-  SSN: string;
-  Name: string;
-  Email: string;
-  PhoneNumber: number;
-  AcademicYear: number;
-  DateOfBirth: string; // Date
-  Gender: 'Male' | 'Female';
-  Address: string;
-  Department: string;
-  FEES: boolean;
-  PersonalPhotoURL: string;
+  id : string,
+  ssn: number;
+  name: string;
+  email: string;
+  phone_number: number;
+  academic_year: number;
+  date_of_birth: Date;
+  gender: 'Male' | 'Female';
+  address: string;
+  department: string;
+  fees: boolean;
+  image: string;
 }
+
 
 export interface Course {
-  ID: string;
-  Name: string;
-  Year: number;
-  Semester: number;
+  id: string;
+  name: string;
+  year: string;
+  semester: string;
 }
 
+
 export interface Professor {
-  SSN: string;
-  Name: string;
-  Email: string;
-  PhoneNumber: string;
-  DateOfBirth: Date;
-  Gender: string;
-  Address: string;
-  Department: string;
-  PersonalPhotoURL: string;
-  University: string;
-  Master: string;
-  Phd: string;
+  address: string;
+  created_at: Date;
+  department: string;
+  email: string;
+  gender: string;
+  id: string;
+  image: string;
+  master: string;
+  name: string;
+  phd: string;
+  phone_number: string;
+  ssn: string;
+  university: string;
+  updated_at: Date;
 }

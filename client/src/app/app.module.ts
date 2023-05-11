@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule} from '@angular/material/menu';
 
 // Pages
 import { DashboardComponent } from '@/pages/dashboard/dashboard.component';
@@ -13,6 +14,7 @@ import { CoursesComponent } from '@/pages/courses/courses.component';
 import { ProfessorsComponent } from '@/pages/professors/professors.component';
 import { StudentsComponent } from '@/pages/students/students.component';
 import { StudentProfileComponent } from '@/pages/students/student-profile/student-profile.component';
+import { LoginComponent } from '@/pages/login/login.component';
 
 // Components
 import {
@@ -46,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProfessorsComponent,
     StudentsComponent,
     StudentProfileComponent,
+    LoginComponent,
 
     // Components
     LayoutComponent,
@@ -68,6 +71,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
