@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit{
     if (obj != null)
     {
       this.router.navigate(['']);
-      console.log("success");
     }
   }  
 }
