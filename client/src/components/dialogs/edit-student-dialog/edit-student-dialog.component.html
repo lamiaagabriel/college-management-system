@@ -86,8 +86,7 @@
             #fname="ngModel"
           />
         </mat-form-field>
-        <mat-checkbox [(ngModel)]="FEES" [ngModelOptions]="{ standalone: true }"
-          >FEES</mat-checkbox
+        <mat-checkbox [(ngModel)]="FEES" [ngModelOptions]="{ standalone: true }">FEES</mat-checkbox
         >
       </div>
   
@@ -185,10 +184,10 @@
         id="btn"
         [hidden]="!myForm.valid"
       >
-        Add Student
+        Edit Student
       </button>
       <button mat-raised-button disabled class="disabled" [hidden]="myForm.valid">
-        Add Student
+        Edit Student
       </button>
       <button mat-raised-button color="primary" type="button" (click)="onClose()">
         Close
