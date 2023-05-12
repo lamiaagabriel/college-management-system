@@ -22,7 +22,6 @@ export class EditStudentDialogComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   ngOnInit(): void {
-    console.log(this.data);
     this.ssn = this.data.ssn;
     this.fullname = this.data.fullname;
     this.phonenumber = this.data.phonenumber;
@@ -30,15 +29,19 @@ export class EditStudentDialogComponent {
     this.PersonEmail = this.data.email;
     this.AcademicYear = this.data.academicyear;
     this.Address= this.data.address;
-    this.FEES= this.data.fees;
+    this.data.fees === '0' ? this.FEES = false : this.FEES = true;
     this.Department = this.data.department;
     this.Password = this.data.password;
     this.PersonalPhotoURL = this.data.photourl;
     this.ImgSrc = 'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
     this.PersonalPhotoURL +
     '.jpg'
+   /*
+    this.DOB = `"${this.data.dateofbirth?.substr(0,4)}-${this.data.dateofbirth?.substr(5,2)}-${this.data.dateofbirth?.substr(8,2)}"`;
+    console.log(typeof(this.DOB));
+    console.log(this.DOB);
+   */
   }
-
   fullname: string | null = null;
   ssn: string | null = null;
   phonenumber: string | null = null;
@@ -47,7 +50,9 @@ export class EditStudentDialogComponent {
   AcademicYear: string | null = null;
   Department: string | null = null;
   Password: string | null = null;
-  serializedDate = new FormControl(new Date().toISOString()); // this.serializedDate.value
+  DOB: string = '';
+  serializedDate = new FormControl(
+  new Date().toISOString()); // this.serializedDate.value
   Address: string | null = null;
   fullData: boolean = true;
   genders: string[] = ['male', 'female'];
@@ -89,33 +94,40 @@ export class EditStudentDialogComponent {
      this.Department = this.form.value.Department;
      this.Password = this.form.value.Password;
      this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
-
+     this.DOB = this.serializedDate.value?.toString()!;
+     this.DOB = this.convert(this.DOB);
     // Sending request
-    const res = await fetch('http://localhost:3001/student', {
+    const res = await fetch('http://localhost:3000/api/students', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        fullname: this.fullname,
         ssn: this.ssn,
-        PhoneNumber: this.phonenumber,
-        PersonEmail: this.PersonEmail,
-        PersonGender: this.PersonGender,
-        DOB: this.serializedDate.value?.slice(0, 10),
-        AcademicYear: this.AcademicYear,
-        Address: this.Address,
-        Department: this.Department,
-        FEES: this.FEES,
-        Password: this.Password,
-        PersonalPhoto: this.PersonalPhotoURL,
+        name: this.fullname,
+        phone_number: this.phonenumber,
+        email: this.PersonEmail,
+        gender: this.PersonGender,
+        date_of_birth: this.DOB,
+        academic_year: this.AcademicYear,
+        address: this.Address,
+        department: this.Department,
+        fees: this.FEES,
+        password: this.Password,
+        image: this.PersonalPhotoURL,
       }),
     }).then((res) => res.json());
 
   }
 
+  convert(str:string) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+
   onClose() {
-   console.log(typeof(this.AcademicYear)) 
     this.matDialogRef.close();
   }
 }

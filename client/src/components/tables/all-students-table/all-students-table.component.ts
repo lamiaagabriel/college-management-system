@@ -44,22 +44,21 @@ export class AllStudentsTableComponent {
         console.log('Error');
         return;
       }
-    // console.log(data[0]); // Object
-     
+      // console.log(data);
        this.dialog.open(EditStudentDialogComponent,{
         data:{
           ssn:ssn,
-          fullname:data[0].name,
-          email:data[0].email,
-          phonenumber:data[0].phone_number,
-          academicyear:data[0].academic_year,
-          dateofbirth:data[0].date_of_birth,
-          gender:data[0].gender,
-          address:data[0].address,
-          department:data[0].department,
-          fees:data[0].fees,
-          photourl:data[0].image,
-          password:data[0].password
+          fullname:data.name,
+          email:data.email,
+          phonenumber:data.phone_number,
+          academicyear:data.academic_year,
+          dateofbirth:data.date_of_birth,
+          gender:data.gender,
+          address:data.address,
+          department:data.department,
+          fees:data.fees,
+          photourl:data.image,
+          password:data.password
         }
        });
       
