@@ -18,7 +18,7 @@
           <img
             [src]="
               'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
-              element.PersonalPhotoURL +
+              element.image +
               '.jpg'
             "
             [alt]="element.name"
@@ -41,7 +41,7 @@
     <!-- department Column -->
     <ng-container matColumnDef="department">
       <th mat-header-cell *matHeaderCellDef>Department</th>
-      <td mat-cell *matCellDef="let element">{{ element.department }}</td>
+      <td mat-cell *matCellDef="let element">{{element.department}}</td>
     </ng-container>
 
     <!-- master Column -->

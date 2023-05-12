@@ -112,56 +112,26 @@
             #fname="ngModel"
           />
         </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mr-4">
+          <mat-label>Department</mat-label>
+          <mat-select name="Department" ngModel>
+            <mat-option value="Computer Engineering"
+              >Computer Engineering</mat-option
+            >
+            <mat-option value="Communication and Electronics engineering"
+              >Communication and Electronics engineering</mat-option
+            >
+            <mat-option value="Electrical Power Engineering"
+              >Electrical Power Engineering</mat-option
+            >
+            <mat-option value="Civil Engineering">Civil Engineering</mat-option>
+            <mat-option value="architecture Engineering"
+              >architecture Engineering</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
       </div>
-  
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Academic Year</mat-label>
-        <mat-select id="year" name="year" ngModel>
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-          <mat-option value="3">3</mat-option>
-          <mat-option value="4">4</mat-option>
-          <mat-option value="5">5</mat-option>
-        </mat-select>
-      </mat-form-field> -->
-  
-      <mat-form-field appearance="fill" class="dataofbirth">
-        <mat-label>Data of Birth</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker2"
-          [formControl]="serializedDate"
-        />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker2"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill" class="mr-4">
-        <mat-label>Department</mat-label>
-        <mat-select name="Department" ngModel>
-          <mat-option value="Preparatory">Preparatory</mat-option>
-          <mat-option value="Electrical Engineering-General"
-            >Electrical Engineering - General</mat-option
-          >
-          <mat-option value="Computer Engineering"
-            >Computer Engineering</mat-option
-          >
-          <mat-option value="Communication and Electronics engineering"
-            >Communication and Electronics engineering</mat-option
-          >
-          <mat-option value="Electrical Power Engineering"
-            >Electrical Power Engineering</mat-option
-          >
-          <mat-option value="Civil Engineering">Civil Engineering</mat-option>
-          <mat-option value="architecture Engineering"
-            >architecture Engineering</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
   
       <label id="Gender" class="font-bold">Gender: </label>
       <mat-radio-group
