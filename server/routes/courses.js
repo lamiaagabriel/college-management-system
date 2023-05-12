@@ -32,6 +32,30 @@ router.delete('/:ssn', async (req, res) => {
       })
     }
   }
-})
+});
+
+router.post("/", async (req, res) => {
+  console.log(req.body);
+  try {
+    const message = await db.createOne({
+      table: "courses",
+      record: {
+        name: req.body.name,
+        year: req.body.year,
+        semester: req.body.semester,
+        id : req.body.id,
+      },
+    })
+    res.status(200).json({
+      results: message,
+      errors: null,
+    })
+  } catch (err) {
+    res.status(500).json({
+      results: err.message,
+      errors: null,
+    })
+  }
+});
 
 export default router

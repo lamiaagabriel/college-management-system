@@ -2,7 +2,6 @@ import { ApiService } from '@/services/api/api.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-// import { UploadService } from 'src/services/upload.service';
 
 
 @Component({
