@@ -48,7 +48,6 @@ export class AllProfessorsTableComponent {
         return;
       }
     });
-    location.reload();
   }
 }
 
