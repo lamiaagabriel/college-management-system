@@ -9,25 +9,6 @@ router.get("/", async (req, res) => {
   res.status(200).json(professors)
 })
 
-// router.get('/',
-//   async (req, res) => {
-//     try {
-//       connection.query('SELECT * FROM PROFESSOR', (err, rows) => {
-//         if (err) throw err;
-
-//         return res.status(200).json({
-//           results: rows,
-//           errors: null,
-//         });
-//       });
-//     } catch (error) {
-//       res.status(500).json({
-//         results: null,
-//         errors: 'Error in finding professors.',
-//       });
-//     }
-//   }
-// );
 
 router.post("/", async (req, res) => {
   try {
@@ -60,24 +41,6 @@ router.post("/", async (req, res) => {
   }
 })
 
-// connection.query(query, (err, rows) => {
-//   if (err) throw err;
-// });
-
-//   console.log(req.body);
-// res.status(200).json({
-//   results: 'Inserted Successfully.',
-//   errors: null,
-// });
-// } catch (error) {
-//   console.log(error);
-//   res.status(500).json({
-//     results: null,
-//     errors: 'Professors Error',
-//   });
-// }
-// });
-
 router.delete('/:ssn', async (req, res) => {
   let ssn = req.params?.ssn;
   if (ssn)
@@ -103,31 +66,6 @@ router.delete('/:ssn', async (req, res) => {
       })
     }
   }
-
-
-  // try {
-    // const professorquery = `Delete from PROFESSOR Where SSN = "${ssn}"`
-    // connection.query(professorquery, (err, rows) => {
-    //   if (err) throw err;
-    // });
-
-  //   const Passwordquery = `Delete from PASSWORDS Where SSN = "${ssn}" `
-  //       connection.query(Passwordquery, (err, rows) => {
-  //     if (err) console.log(err);
-  //   });
-
-  //   res.status(200).json({
-  //     results: 'Deleted Successfully.',
-  //     errors: null,
-  //   });
-
-  // } catch (error) {
-  //   console.log(error);
-  //   res.status(500).json({
-  //     results: null,
-  //     errors: 'Professors Error',
-  //   });
-  // }
 });
 
 export default router

@@ -1,20 +1,26 @@
 <Layout>
   <section>
     <div class="container">
-      <div>
-        <h1
-          class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
-        >
-          Courses
-        </h1>
-        <p
-          class="text-sm text-slate-500 dark:text-slate-400 [&:not(:first-child)]:mt-2"
-        >
-          Latest Actions.
-        </p>
+      <div class="w-full inline-flex justify-between items-center gap-4">
+        <div>
+          <h1
+            class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
+          >
+            Courses
+          </h1>
+          <p
+            class="text-sm text-slate-500 dark:text-slate-400 [&:not(:first-child)]:mt-2"
+          >
+            Latest Actions.
+          </p>
+        </div>
+
+        <button mat-stroked-button (click)="openForm()">Add Course</button>
+        <!-- <a routerLink="/students/1"> Go To Student 01 </a> -->
       </div>
 
       <app-all-courses-table></app-all-courses-table>
     </div>
   </section>
 </Layout>
+
