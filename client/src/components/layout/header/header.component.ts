@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'Header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private router : Router){}
+  constructor(private router: Router) {}
 
   navLinks: { to: string; title: string }[] = [
-    { to: '/', title: 'Home' },
+    { to: '/dashbord', title: 'Home' },
     { to: '/courses', title: 'Courses' },
     { to: '/students', title: 'Students' },
     { to: '/professors', title: 'Professors' },
@@ -20,4 +19,12 @@ export class HeaderComponent {
   username = 'Marwa';
   id = '12345';
   avatar: String = "https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/wukylecey7nxvowjn96d.jpg";
+
+  gohome(){
+    this.router.navigate(['/login']);
+  }
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 }

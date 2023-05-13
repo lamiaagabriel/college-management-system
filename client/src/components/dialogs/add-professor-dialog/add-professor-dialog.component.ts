@@ -2,7 +2,6 @@ import { UploadImageService } from '@/services/upload-image/upload-image.service
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UploadImageService } from '@/services/upload-image/upload-image.service';
 
 
 @Component({

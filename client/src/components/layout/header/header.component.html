@@ -1,6 +1,9 @@
 <header class="bg-gray-300">
   <div class="container py-4 flex items-center justify-between mx-auto">
-
+    <!-- <a mat-menu-item id="Logout"">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </a> -->
     <a
       class="options"
       *ngFor="let navLink of navLinks"
@@ -16,7 +19,7 @@
       <label mat-menu-item disabled>
         ID : {{id}}
       </label>
-      <a mat-menu-item routerLink="">
+      <a mat-menu-item  (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
