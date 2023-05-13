@@ -20,8 +20,4 @@ export class HeaderComponent {
   username = 'Marwa';
   id = '12345';
   avatar: String = "https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/wukylecey7nxvowjn96d.jpg";
-
-  gohome(){
-    this.router.navigate(['/login']);
-  }
 }
