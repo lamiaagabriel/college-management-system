@@ -15,34 +15,33 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  try {
-    const message = await db.createOne({
-      table: "professors",
-      record: {
-        id: nanoid(),
-        ssn: req.body.ssn,
-        name: req.body.fullname,
-        email: req.body.PersonEmail,
-        phone_number: req.body.PhoneNumber,
-        address: req.body.Address,
-        image: req.body.PersonalPhoto,
-        gender: req.body.PersonGender,
-        phd: req.body.phd,
-        master: req.body.master,
-        university: req.body.university,
-        department: req.body.department,
-        date_of_birth: req.body.DOB,
-      },
-    })
-    res.status(200).json({
-      results: message,
-      errors: null,
-    })
+try { 
+  const message = await db.createOne({
+  table: "professors",
+  record: {
+  id: nanoid(),
+  ssn: req.body.ssn,
+  name: req.body.fullname,
+  email: req.body.PersonEmail,
+  phone_number: req.body.PhoneNumber,
+  address: req.body.Address,
+  image: req.body.PersonalPhoto,
+  gender: req.body.PersonGender,
+  phd: req.body.phd,
+  master: req.body.master,
+  university: req.body.university,
+  department: req.body.department,
+  },
+  })
+  res.status(200).json({
+  results: message,
+  errors: null,
+  })
   } catch (err) {
-    res.status(500).json({
-      results: err.message,
-      errors: null,
-    })
+  res.status(500).json({
+  results: err.message,
+  errors: null,
+  })
   }
 })
 

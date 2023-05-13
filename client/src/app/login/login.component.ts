@@ -1,41 +1,54 @@
-import { Component, OnInit,NgModule, ViewChild } from '@angular/core';
+import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit{
-  constructor(private router : Router){}
-  ngOnInit(): void {
-  }
+export class LoginComponent implements OnInit {
+  constructor(private router: Router) {}
+  ngOnInit(): void {}
 
-  datalabel:string = "Username";
-  logintype:string = "";
-  password:string = "";
-  uname_id: string = "";
+  error:string = '';
+  datalabel: string = 'Username';
+  password: string = '12345';
+  uname_id: string = 'Project Team';
   admins = [
-    {name: "Marwa", password: "512001"},
-    {name: "Admin", password: "Admin"},
-  ]
+    { name: 'Project Team', pass: '12345' },
+    // { name: 'Marwa', password: '512001' },
+    // { name: 'Admin', password: 'Admin' },
+  ];
 
   @ViewChild('myForm') form: any = NgForm;
 
-  async onSubmit(){
-      if(this.datalabel == "Username")
-        {this.logintype = "Admin";}
-      else  
-        {this.logintype = "user";}
-
+  async onSubmit() {
+    let admin = document.querySelector('input[id="admin"]:checked'); // That returns null if the admin radio button is not selected
+    if (this.uname_id === '' || this.password === ''){
+      this.error = 'Fill all data';
+      return;
+    }
+    
+    if (admin !== null) {
       this.uname_id = this.form.value.username;
       this.password = this.form.value.pass;
+
+      let obj = this.admins.find(
+        (o) => o.name === this.uname_id && o.pass === this.password
+      );
+      if (obj != undefined) this.router.navigate(['dashbord']);
+      else this.error = "This admin is not found";
+    }else{
+      const res = await fetch(`http://localhost:3000/passwords/${this.uname_id}/${this.password}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => res.json());
       
-    let obj = this.admins.find(o => o.name === this.uname_id && o.password === this.password);
-    if (obj != null)
-    {
-      this.router.navigate(['']);
+      if (res.results.length == 0) this.error = 'This user is not found';
+      else this.router.navigate(['/StudentPage'], { state: { ssn: this.uname_id } });
     }
-  }  
+  }
 }

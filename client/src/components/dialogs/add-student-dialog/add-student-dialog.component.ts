@@ -30,6 +30,7 @@ export class AddStudentDialogComponent {
   Department: string | null = null;
   Password: string | null = null;
   serializedDate = new FormControl(new Date().toISOString()); // this.serializedDate.value
+  DOB: string = '';
   Address: string | null = null;
   fullData: boolean = true;
   genders: string[] = ['male', 'female'];
@@ -74,6 +75,8 @@ export class AddStudentDialogComponent {
     this.Department = this.form.value.Department;
     this.Password = this.form.value.Password;
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
+    this.DOB = this.serializedDate.value?.toString()!;
+    this.DOB = this.convert(this.DOB);
 
     // Sending request
     const res = await fetch('http://localhost:3000/api/students', {
@@ -87,7 +90,7 @@ export class AddStudentDialogComponent {
         phone_number: this.phonenumber,
         email: this.PersonEmail,
         gender: this.PersonGender,
-        date_of_birth: this.serializedDate.value?.slice(0, 10),
+        date_of_birth: this.DOB,
         academic_year: this.AcademicYear,
         address: this.Address,
         department: this.Department,
@@ -98,7 +101,13 @@ export class AddStudentDialogComponent {
     }).then((res) => res.json());
     // this.form.reset();
   }
-
+   convert(str:string) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+  
   onClose() {
     this.matDialogRef.close();
   }

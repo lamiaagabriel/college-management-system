@@ -1,4 +1,4 @@
-import { ApiService } from '@/services/api/api.service';
+import { UploadImageService } from '@/services/upload-image/upload-image.service';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -17,8 +17,7 @@ export class AddProfessorDialogComponent {
   }
   constructor(
     private matDialogRef: MatDialogRef<AddProfessorDialogComponent>,
-    private _uploadImageService: UploadImageService,
-    private  api: ApiService,
+    private uploadImageService: UploadImageService,
   ) {}
   fullname: string | null = null;
   ssn: string | null = null;
@@ -52,12 +51,14 @@ export class AddProfessorDialogComponent {
 
   async onSubmit() {
     // Uploading Image
+
     const img = this.PersonalPhoto[0];
     const data = new FormData();
     data.append('file', img);
     data.append('upload_preset', 'CollegeSystem');
     data.append('cloud_name', 'dnbruhgqr');
-    this._uploadImageService.uploadImage(data).subscribe((res) => {
+
+    this.uploadImageService.uploadImage(data).subscribe((res) => {
       if (res) {
         this.PersonalPhotoURL = res.secure_url;
       }
@@ -71,9 +72,9 @@ export class AddProfessorDialogComponent {
     this.university = this.form.value.personDetails.university;
     this.phd = this.form.value.personDetails.phd;
     this.master = this.form.value.personDetails.master;
-    this.Department = this.form.value.Department;
+    this.Department = this.form.value.personDetails.Department;
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
-  
+
 
     
     const res = await fetch('http://localhost:3000/api/professors', {
@@ -86,10 +87,10 @@ export class AddProfessorDialogComponent {
         fullname: this.fullname,
         PersonEmail: this.PersonEmail,
         PhoneNumber: this.phonenumber,
-        DOB: this.serializedDate.value?.slice(0, 10),
+        DOB: this.serializedDate.value?.toString().slice(0, 10),
         PersonGender: this.PersonGender,
         Address: this.Address, 
-        Department: this.Department,
+        department: this.Department,
         PersonalPhoto: this.PersonalPhotoURL,
         university: this.university,
         master: this.master,
@@ -97,10 +98,7 @@ export class AddProfessorDialogComponent {
       }),
     }).then((res) => res.json());
     this.response = res.results;
-    if (this.response !== "Error in creating data within Database.")
-    {
-      location.reload();
-    }
+
   }
  
   onClose() {

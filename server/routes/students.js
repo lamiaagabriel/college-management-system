@@ -8,9 +8,15 @@ router.get("/", async (req, res) => {
   res.status(200).json(students)
 });
 
+
 router.get("/", async (req, res) => {
   const student = await db.findOne({ table: "students" , where:req.params.ssn})
   res.status(200).json(student)
+});
+
+router.get("/:ssn", async (req, res) => {
+  const students = await db.findOne({ table: "students" , where: {ssn:req.params.ssn}})
+  res.status(200).json(students)
 });
 
 router.delete('/:ssn', async (req, res) => {
@@ -49,6 +55,17 @@ router.post("/", async (req,res) => {
  };
   const students = await db.createOne({ table: "students",record:student})
   res.status(200).json(students)
+});
+
+router.put("/", async (req,res) => {
+  console.log(req.body);
+  let student = { name:req.body.name, email:req.body.email, phone_number:req.body.phone_number,
+  address:req.body.address, image:req.body.image, fees:req.body.fees, academic_year:req.body.academic_year,
+  gender:req.body.gender,date_of_birth:req.body.date_of_birth, department:req.body.department,password:req.body.password
+ };
+  const students = await db.updateOne({ table: "students",values:student,where:{ssn:req.body.ssn}})
+  res.status(200).json(students)
+  
 });
 
 export default router

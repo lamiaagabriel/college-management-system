@@ -2,7 +2,7 @@ import express from "express"
 import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from "dotenv"
-import mysql from "mysql"
+import mysql from "mysql2"
 
 dotenv.config() // to get the secret info. from .env file
 
@@ -18,6 +18,7 @@ import professorsRouter from "./routes/professors.js"
 import coursesRouter from "./routes/courses.js"
 import studentData from "./routes/studentsData.js"
 import studentCourses from "./routes/studentCourses.js"
+import userpasswords from  "./routes/passwords.js"
 
 const app = express()
 
@@ -29,12 +30,13 @@ app.use(cors()) // to get req.body from one site only
 
 // Routes
 app.use("/api/students", studentsRouter)
-app.use("/api/students/:id", studentsRouter)
+app.use("/api/students/ssn", studentsRouter)
 app.use("/api/professors", professorsRouter)
 app.use("/api/professors/:id", professorsRouter)
 app.use("/api/courses", coursesRouter)
 app.use("/studentData", studentData)
 app.use("/studentCourses", studentCourses)
+app.use("/passwords", userpasswords)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
