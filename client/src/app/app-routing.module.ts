@@ -10,12 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { StudentPageComponent } from './student-page/student-page.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: LoginComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'professors', component: ProfessorsComponent },
   { path: 'students', component: StudentsComponent },
   { path: 'students/:id', component: StudentProfileComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'dashbord', component: DashboardComponent },
   { path: 'StudentPage', component: StudentPageComponent },
 ];
 

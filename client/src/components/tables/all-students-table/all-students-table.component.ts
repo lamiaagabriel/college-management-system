@@ -7,7 +7,6 @@ import { EditStudentDialogComponent } from '@/components/dialogs/edit-student-di
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-all-students-table',
   templateUrl: './all-students-table.component.html',
@@ -32,6 +31,7 @@ export class AllStudentsTableComponent {
         console.log('Error');
         return;
       }
+      console.log(data);
       this.dataSource = new MatTableDataSource<Student[]>(data);
       this.dataSource.paginator = this.paginator;
     });
