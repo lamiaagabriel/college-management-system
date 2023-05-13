@@ -32,6 +32,7 @@ app.use(cors()) // to get req.body from one site only
 app.use("/api/students", studentsRouter)
 app.use("/api/students/ssn", studentsRouter)
 app.use("/api/professors", professorsRouter)
+app.use("/api/professors/:id", professorsRouter)
 app.use("/api/courses", coursesRouter)
 app.use("/studentData", studentData)
 app.use("/studentCourses", studentCourses)
