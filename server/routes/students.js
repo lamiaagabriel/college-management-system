@@ -8,12 +8,6 @@ router.get("/", async (req, res) => {
   res.status(200).json(students)
 });
 
-
-router.get("/", async (req, res) => {
-  const student = await db.findOne({ table: "students" , where:req.params.ssn})
-  res.status(200).json(student)
-});
-
 router.get("/:ssn", async (req, res) => {
   const students = await db.findOne({ table: "students" , where: {ssn:req.params.ssn}})
   res.status(200).json(students)
@@ -65,7 +59,6 @@ router.put("/", async (req,res) => {
  };
   const students = await db.updateOne({ table: "students",values:student,where:{ssn:req.body.ssn}})
   res.status(200).json(students)
-  
 });
 
 export default router

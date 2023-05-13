@@ -9,9 +9,9 @@ router.get("/", async (req, res) => {
   res.status(200).json(professors)
 })
 
-router.get("/", async (req, res) => {
-  const student = await db.findOne({ table: "professors" , where:req.params.ssn})
-  res.status(200).json(student)
+router.get("/:ssn", async (req, res) => {
+  const professor = await db.findOne({ table: "professors" , where: {ssn:req.params.ssn}})
+  res.status(200).json(professor)
 });
 
 router.post("/", async (req, res) => {
@@ -31,6 +31,7 @@ try {
   master: req.body.master,
   university: req.body.university,
   department: req.body.department,
+  date_of_birth:req.body.DOB,
   },
   })
   res.status(200).json({
@@ -44,6 +45,15 @@ try {
   })
   }
 })
+router.put("/", async (req,res) => {
+  console.log(req.body);
+  let professor = { name:req.body.name,email:req.body.email, phone_number:req.body.phone_number,
+  address:req.body.address, image:req.body.image, gender:req.body.gender, phd:req.body.phd, master:req.body.master,
+ university:req.body.university, department:req.body.department,date_of_birth:req.body.date_of_birth
+ };
+  const professors = await db.updateOne({ table: "professors",values:professor,where:{ssn:req.body.ssn}})
+  res.status(200).json(professors)
+});
 
 router.delete('/:ssn', async (req, res) => {
   let ssn = req.params?.ssn;
@@ -71,5 +81,6 @@ router.delete('/:ssn', async (req, res) => {
     }
   }
 });
+
 
 export default router
