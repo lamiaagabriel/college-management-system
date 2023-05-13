@@ -22,6 +22,7 @@ export class EditStudentDialogComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   ngOnInit(): void {
+    console.log(this.data);
     this.ssn = this.data.ssn;
     this.fullname = this.data.fullname;
     this.phonenumber = this.data.phonenumber;
@@ -36,11 +37,10 @@ export class EditStudentDialogComponent {
     this.ImgSrc = 'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
     this.PersonalPhotoURL +
     '.jpg'
-   /*
-    this.DOB = `"${this.data.dateofbirth?.substr(0,4)}-${this.data.dateofbirth?.substr(5,2)}-${this.data.dateofbirth?.substr(8,2)}"`;
+  
+    this.DOB = `'${this.data.dateofbirth?.substr(0,4)}-${this.data.dateofbirth?.substr(5,2)}-${this.data.dateofbirth?.substr(8,2)}'`;
     console.log(typeof(this.DOB));
     console.log(this.DOB);
-   */
   }
   fullname: string | null = null;
   ssn: string | null = null;
@@ -52,7 +52,7 @@ export class EditStudentDialogComponent {
   Password: string | null = null;
   DOB: string = '';
   serializedDate = new FormControl(
-  new Date().toISOString()); // this.serializedDate.value
+  new Date(this.data.dateofbirth?.substr(0,4),this.data.dateofbirth?.substr(5,2) - 1,this.data.dateofbirth?.substr(8,2)).toISOString()); // this.serializedDate.value
   Address: string | null = null;
   fullData: boolean = true;
   genders: string[] = ['male', 'female'];
@@ -74,16 +74,21 @@ export class EditStudentDialogComponent {
 
   async onSubmit() {
     // Uploading Image
-    const img = this.PersonalPhoto[0];
-    const data = new FormData();
-    data.append('file', img);
-    data.append('upload_preset', 'CollegeSystem');
-    data.append('cloud_name', 'dnbruhgqr');
-    this._uploadService.uploadImage(data).subscribe((res) => {
-      if (res) {
-        this.PersonalPhotoURL = res.secure_url;
-      }
-    });
+    if (this.PersonalPhoto.length >= 1){
+      const img = this.PersonalPhoto[0];
+      const data = new FormData();
+      data.append('file', img);
+      data.append('upload_preset', 'CollegeSystem');
+      data.append('cloud_name', 'dnbruhgqr');
+      this._uploadService.uploadImage(data).subscribe((res) => {
+        if (res) {
+          this.PersonalPhotoURL = res.secure_url;
+        }
+      });
+      this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
+    }
+    
+   
 
      // Setting request attribtues
      this.fullname = this.form.value.personDetails.fullname;
@@ -93,7 +98,6 @@ export class EditStudentDialogComponent {
      this.AcademicYear = this.form.value.AcademicYear;
      this.Department = this.form.value.Department;
      this.Password = this.form.value.Password;
-     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
      this.DOB = this.serializedDate.value?.toString()!;
      this.DOB = this.convert(this.DOB);
     // Sending request
