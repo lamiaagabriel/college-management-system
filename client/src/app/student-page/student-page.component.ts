@@ -27,7 +27,7 @@ export class StudentPageComponent implements OnInit {
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json());
-    
+
     this.students = res;
     if (this.students[0] != undefined) {
       this.studentInfo.image = `https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/${this.students[0]['image']}`;
@@ -125,6 +125,10 @@ export class StudentPageComponent implements OnInit {
   changeCheck2() {
     if (this.toggleChecked[1] === '') this.toggleChecked.reverse();
     this.getCourses('2');
+  }
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }
 

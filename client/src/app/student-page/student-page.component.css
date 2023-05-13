@@ -79,7 +79,18 @@
 .grades header{
     margin-top: -20px;
 }
-
+#Logout{
+    position: absolute;
+    top: 2vh;
+    right: 15%;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 7px;
+    border-radius: 5px;
+}
+#Logout:hover{
+    background-color: red;
+}
 /* Response */
 @media screen and (max-width: 1090px) {
     .personal-info{
@@ -121,5 +132,10 @@
     }
     .grades header{
         flex-direction: column;
+    }
+    #Logout{
+        position: absolute;
+    top: 8vh;
+    right: 0;
     }
 }
