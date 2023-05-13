@@ -1,25 +1,42 @@
-import { ApiService } from '@/services/api/api.service';
-import { Component, ViewChild } from '@angular/core';
+import { Component,ViewChild,OnInit,Inject} from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UploadImageService } from '@/services/upload-image/upload-image.service';
 
-
 @Component({
-  selector: 'app-add-professor-dialog',
-  templateUrl: './add-professor-dialog.component.html',
-  styleUrls: ['./add-professor-dialog.component.css'],
+  selector: 'app-edit-professor-dialog',
+  templateUrl: './edit-professor-dialog.component.html',
+  styleUrls: ['./edit-professor-dialog.component.css']
 })
-export class AddProfessorDialogComponent {
+export class EditProfessorDialogComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   getErrorMessage() {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   constructor(
-    private matDialogRef: MatDialogRef<AddProfessorDialogComponent>,
-    private _uploadImageService: UploadImageService,
-    private  api: ApiService,
+    private matDialogRef: MatDialogRef<EditProfessorDialogComponent>,
+    private _uploadService: UploadImageService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
+
+  ngOnInit(): void {
+    console.log(this.data);
+    this.ssn = this.data.ssn;
+    this.fullname = this.data.fullname;
+    this.phonenumber = this.data.phonenumber;
+    this.PersonGender = this.data.gender;
+    this.PersonEmail = this.data.email;
+    this.master = this.data.master;
+    this.Address= this.data.address;
+    this.phd= this.data.phd;
+    this.Department = this.data.department;
+    this.university = this.data.university;
+    this.PersonalPhotoURL = this.data.photourl;
+    this.ImgSrc = 'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
+    this.PersonalPhotoURL +
+    '.jpg'
+  }
+
   fullname: string | null = null;
   ssn: string | null = null;
   phonenumber: string | null = null;
@@ -32,7 +49,7 @@ export class AddProfessorDialogComponent {
   university: string | null = null;
   master: string | null = null;
   phd: string | null = null;
-  genders: string[] = ['Male', 'Female'];
+  genders: string[] = ['male', 'female'];
   PersonalPhoto: File[] = [];
   PersonalPhotoURL: string = '';
   ImgSrc: string = '';
@@ -57,11 +74,11 @@ export class AddProfessorDialogComponent {
     data.append('file', img);
     data.append('upload_preset', 'CollegeSystem');
     data.append('cloud_name', 'dnbruhgqr');
-    this._uploadImageService.uploadImage(data).subscribe((res) => {
-      if (res) {
-        this.PersonalPhotoURL = res.secure_url;
-      }
-    });
+    // this._uploadService.uploadImage(data).subscribe((res) => {
+    //   if (res) {
+    //     this.PersonalPhotoURL = res.secure_url;
+    //   }
+    // });
 
     // Setting request attribtuesPersonalPhoto
     this.ssn = this.form.value.personDetails.ssn;

@@ -9,8 +9,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  const students = await db.findOne({ table: "students" , where:req.params.ssn})
-  res.status(200).json(students)
+  const student = await db.findOne({ table: "students" , where:req.params.ssn})
+  res.status(200).json(student)
 });
 
 router.delete('/:ssn', async (req, res) => {

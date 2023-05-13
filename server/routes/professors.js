@@ -9,6 +9,10 @@ router.get("/", async (req, res) => {
   res.status(200).json(professors)
 })
 
+router.get("/", async (req, res) => {
+  const student = await db.findOne({ table: "professors" , where:req.params.ssn})
+  res.status(200).json(student)
+});
 
 router.post("/", async (req, res) => {
   try {
@@ -27,6 +31,7 @@ router.post("/", async (req, res) => {
         master: req.body.master,
         university: req.body.university,
         department: req.body.department,
+        date_of_birth: req.body.DOB,
       },
     })
     res.status(200).json({
