@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     }
     
     if (admin !== null) {
-      console.log('admin selected');
       this.uname_id = this.form.value.username;
       this.password = this.form.value.pass;
 
