@@ -21,7 +21,7 @@ export class StudentPageComponent implements OnInit {
   async ngOnInit() {
     this.ssn = this.state.ssn;
     // Fetch student info
-    const res = await fetch(`http://localhost:3000/studentData/${this.ssn}`, {
+    const res = await fetch(`http://localhost:3000/api/studentData/${this.ssn}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export class StudentPageComponent implements OnInit {
   // function for getting student courses passing the semester as parameter
   async getCourses(Semester: any) {
     const res = await fetch(
-      `http://localhost:3000/studentCourses/${this.selected}/${Semester}/${this.ssn}`,
+      `http://localhost:3000/api/studentCourses/${this.selected}/${Semester}/${this.ssn}`,
       {
         method: 'GET',
         headers: {
