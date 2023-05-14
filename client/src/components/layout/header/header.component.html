@@ -1,25 +1,24 @@
 <header class="bg-gray-300">
   <div class="container py-4 flex items-center justify-between mx-auto">
-    <!-- <a mat-menu-item id="Logout"">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-      </a> -->
-    <a
-      class="options"
-      *ngFor="let navLink of navLinks"
-      [routerLink]="navLink.to"
-      >{{ navLink.title }}</a
-    >
+    <a *ngFor="let navLink of navLinks" [routerLink]="navLink.to">{{
+      navLink.title
+    }}</a>
 
-    <button [matMenuTriggerFor]="menu" aria-label="Usermenu" class="w-14 h-14 rounded-full avatar">
+    <button
+      [matMenuTriggerFor]="menu"
+      aria-label="Usermenu"
+      class="w-14 h-14 rounded-full avatar"
+    >
       <mat-icon *ngIf="!avatar">account_circle</mat-icon>
-        <img *ngIf="avatar" [src]="avatar" class=" object-cover object-center w-14 h-14 rounded-full "/>  
+      <img
+        *ngIf="avatar"
+        [src]="avatar"
+        class="object-cover object-center w-14 h-14 rounded-full"
+      />
     </button>
     <mat-menu #menu="matMenu">
-      <label mat-menu-item disabled>
-        ID : {{id}}
-      </label>
-      <a mat-menu-item  (click)="logOut()">
+      <label mat-menu-item disabled> ID : {{ id }} </label>
+      <a mat-menu-item (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
