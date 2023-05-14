@@ -37,10 +37,12 @@ export class EditStudentDialogComponent {
     this.ImgSrc = 'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
     this.PersonalPhotoURL +
     '.jpg'
-  
-    this.DOB = `'${this.data.dateofbirth?.substr(0,4)}-${this.data.dateofbirth?.substr(5,2)}-${this.data.dateofbirth?.substr(8,2)}'`;
-    console.log(typeof(this.DOB));
-    console.log(this.DOB);
+    /*
+    console.log(typeof(this.data.dateofbirth))
+    console.log('Year : ' + this.data.dateofbirth?.substr(0,4));
+    console.log('Month : ' + this.data.dateofbirth?.substr(5,2));
+    console.log('Day : ' + this.data.dateofbirth?.substr(8,2) );
+    */
   }
   fullname: string | null = null;
   ssn: string | null = null;
@@ -70,9 +72,7 @@ export class EditStudentDialogComponent {
     reader.onload = (event: any) => {
     this.ImgSrc = event.target.result;
     };
-  }
 
-  async onSubmit() {
     // Uploading Image
     if (this.PersonalPhoto.length >= 1){
       const img = this.PersonalPhoto[0];
@@ -87,9 +87,9 @@ export class EditStudentDialogComponent {
       });
       this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
     }
-    
-   
+  }
 
+  async onSubmit() {
      // Setting request attribtues
      this.fullname = this.form.value.personDetails.fullname;
      this.ssn = this.form.value.personDetails.ssn;

@@ -43,25 +43,25 @@ export class AllProfessorsTableComponent {
       console.log('Error');
       return;
     }
-  // console.log(data[0]); // Object
-
+  //console.log(data); // Object
+   
      this.dialog.open(EditProfessorDialogComponent,{
       data:{
         ssn:ssn,
-        fullname:data[0].name,
-        email:data[0].email,
-        phonenumber:data[0].phone_number,   
-        dateofbirth:data[0].date_of_birth,
-        gender:data[0].gender,
-        address:data[0].address,
-        department:data[0].department,
-        photourl:data[0].image,
-        university: data[0].university,
-        phd: data[0].phd,
-        master:data[0].master 
+        fullname:data.name,
+        email:data.email,
+        phonenumber:data.phone_number,   
+        dateofbirth:data.date_of_birth,
+        gender:data.gender,
+        address:data.address,
+        department:data.department,
+        photourl:data.image,
+        university: data.university,
+        phd: data.phd,
+        master:data.master 
       }
      });
-    
+   
   });
   }
 

@@ -2,7 +2,6 @@ import { UploadImageService } from '@/services/upload-image/upload-image.service
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UploadImageService } from '@/services/upload-image/upload-image.service';
 
 
 @Component({
@@ -36,6 +35,7 @@ export class AddProfessorDialogComponent {
   PersonalPhotoURL: string = '';
   ImgSrc: string = '';
   response:String = "";
+  DOB: string = '';
 
 
   @ViewChild('myForm') form: any = NgForm;
@@ -47,23 +47,22 @@ export class AddProfessorDialogComponent {
     reader.onload = (event: any) => {
       this.ImgSrc = event.target.result;
     };
+
+     // Uploading Image
+     const img = this.PersonalPhoto[0];
+     const data = new FormData();
+     data.append('file', img);
+     data.append('upload_preset', 'CollegeSystem');
+     data.append('cloud_name', 'dnbruhgqr');
+ 
+     this.uploadImageService.uploadImage(data).subscribe((res) => {
+       if (res) {
+         this.PersonalPhotoURL = res.secure_url;
+       }
+     });
   }
 
   async onSubmit() {
-    // Uploading Image
-
-    const img = this.PersonalPhoto[0];
-    const data = new FormData();
-    data.append('file', img);
-    data.append('upload_preset', 'CollegeSystem');
-    data.append('cloud_name', 'dnbruhgqr');
-
-    this.uploadImageService.uploadImage(data).subscribe((res) => {
-      if (res) {
-        this.PersonalPhotoURL = res.secure_url;
-      }
-    });
-
     // Setting request attribtuesPersonalPhoto
     this.ssn = this.form.value.personDetails.ssn;
     this.fullname = this.form.value.personDetails.fullname;
@@ -74,9 +73,9 @@ export class AddProfessorDialogComponent {
     this.master = this.form.value.personDetails.master;
     this.Department = this.form.value.personDetails.Department;
     this.PersonalPhotoURL = this.PersonalPhotoURL.substr(77, 20);
-
-
-    
+    this.DOB = this.serializedDate.value?.toString()!;
+    this.DOB = this.convert(this.DOB);
+  
     const res = await fetch('http://localhost:3000/api/professors', {
       method: 'POST',
       headers: {
@@ -87,7 +86,7 @@ export class AddProfessorDialogComponent {
         fullname: this.fullname,
         PersonEmail: this.PersonEmail,
         PhoneNumber: this.phonenumber,
-        DOB: this.serializedDate.value?.toString().slice(0, 10),
+        DOB: this.DOB,
         PersonGender: this.PersonGender,
         Address: this.Address, 
         department: this.Department,
@@ -100,7 +99,13 @@ export class AddProfessorDialogComponent {
     this.response = res.results;
 
   }
- 
+  convert(str:string) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
+  }
+  
   onClose() {
     this.matDialogRef.close();
   }

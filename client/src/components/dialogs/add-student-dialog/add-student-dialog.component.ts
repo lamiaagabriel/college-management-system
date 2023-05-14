@@ -44,28 +44,25 @@ export class AddStudentDialogComponent {
   OnFileSelected(event: any) {
     this.PersonalPhoto.push(event.target.files[0]);
     const reader = new FileReader();
-
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (event: any) => {
       this.ImgSrc = event.target.result;
     };
-  }
 
-  async onSubmit() {
     // Uploading Image
-
     const img = this.PersonalPhoto[0];
     const data = new FormData();
     data.append('file', img);
     data.append('upload_preset', 'CollegeSystem');
     data.append('cloud_name', 'dnbruhgqr');
-
     this._uploadImageService.uploadImage(data).subscribe((res: any) => {
       if (res) {
         this.PersonalPhotoURL = res.secure_url;
       }
     });
+  }
 
+  async onSubmit() {
     // Setting request attribtues
     this.fullname = this.form.value.personDetails.fullname;
     this.ssn = this.form.value.personDetails.ssn;
