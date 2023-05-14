@@ -57,6 +57,5 @@ export class AllCoursesTableComponent {
         return;
       }
     });
-    location.reload();
   }
 }
