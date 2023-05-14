@@ -3,7 +3,7 @@ import connection from "../server.js";
 
 const router = express.Router();
 router.get("/:ssn/:pass", async (req, res) => {
-  const query = `select * from PASSWORDS where SSN = '${req.params.ssn}' and PASSWORD = '${req.params.pass}';`;
+  const query = `select * from students where SSN = '${req.params.ssn}' and PASSWORD = '${req.params.pass}';`;
   try {
     connection.query(query, (err, rows) => {
       if (err) throw err;
@@ -14,6 +14,7 @@ router.get("/:ssn/:pass", async (req, res) => {
         });
       }
     });
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({
