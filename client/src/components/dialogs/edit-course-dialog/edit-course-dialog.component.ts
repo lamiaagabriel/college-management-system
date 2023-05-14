@@ -29,7 +29,7 @@ export class EditCourseDialogComponent {
       this.AcademicYear = this.data.AcademicYear.toString();
       this.Semester = this.data.Semester.toString();
       this.ID = this.data.id;
-      this.Department = this.data.Depyearartment;
+      this.Department = this.data.Department;
   }
 
   async onSubmit() {
