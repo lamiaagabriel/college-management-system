@@ -113,6 +113,21 @@
           />
         </mat-form-field>
 
+        <mat-form-field appearance="fill" class="dataofbirth">
+          <mat-label>Data of Birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            [formControl]="serializedDate"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        
         <mat-form-field appearance="fill" class="mr-4">
           <mat-label>Department</mat-label>
           <mat-select name="Department" ngModel>

@@ -31,7 +31,7 @@ export class AllStudentsTableComponent {
         console.log('Error');
         return;
       }
-      console.log(data);
+      // console.log(data);
       this.dataSource = new MatTableDataSource<Student[]>(data);
       this.dataSource.paginator = this.paginator;
     });

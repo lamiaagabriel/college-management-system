@@ -170,10 +170,10 @@
         id="btn"
         [hidden]="!myForm.valid"
       >
-        Add Professor
+        Edit Professor
       </button>
       <button mat-raised-button disabled class="disabled" [hidden]="myForm.valid">
-        Add Professor
+        Edit Professor
       </button>
       <p [class] = "response == '' ? 'hidden' : response == 'Error in creating data within Database.' ? 'text-red-400 visible' : 'hidden' "> {{response}}</p>
       <button mat-raised-button color="primary" type="button" (click)="onClose()">
