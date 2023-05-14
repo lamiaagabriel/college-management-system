@@ -33,6 +33,7 @@ import {
   AddStudentDialogComponent,
   EditStudentDialogComponent,
   EditProfessorDialogComponent,
+  EditCourseDialogComponent,
   AddStudentdegreeDialogComponent
 } from '@/components/dialogs';
 import {
@@ -73,6 +74,7 @@ import { HttpClientModule } from '@angular/common/http';
     AllCoursesTableComponent,
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
+    EditCourseDialogComponent,
   ],
   imports: [
     BrowserModule,

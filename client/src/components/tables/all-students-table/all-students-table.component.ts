@@ -7,6 +7,7 @@ import { EditStudentDialogComponent } from '@/components/dialogs/edit-student-di
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-all-students-table',
   templateUrl: './all-students-table.component.html',
@@ -61,9 +62,7 @@ export class AllStudentsTableComponent {
           password:data.password
         }
        });
-      
     });
-  
   }
 
   onDelete(ssn: string) {
