@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   error: string = '';
   datalabel: string = 'Name';
-  password: string = '12345';
-  uname_id: string = 'Project Team';
+  password: string = '';
+  uname_id: string = '';
   admins = [
     { name: 'Project Team', pass: '12345' },
     // { name: 'Marwa', password: '512001' },
