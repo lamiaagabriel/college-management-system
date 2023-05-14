@@ -181,22 +181,33 @@
         >Some of the required fields does not have valid value.</small
       >
     </div>
-
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      value="Submit"
-      id="btn"
-      [hidden]="!myForm.valid"
-    >
-      Add Student
-    </button>
-    <button mat-raised-button disabled class="disabled" [hidden]="myForm.valid">
-      Add Student
-    </button>
-    <button mat-raised-button color="primary" type="button" (click)="onClose()">
-      Close
-    </button>
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        value="Submit"
+        id="btn"
+        [hidden]="!myForm.valid"
+      >
+        Add Student
+      </button>
+      <button
+        mat-raised-button
+        disabled
+        class="disabled"
+        [hidden]="myForm.valid"
+      >
+        Add Student
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="onClose()"
+      >
+        Close
+      </button>
+    </div>
   </form>
 </div>

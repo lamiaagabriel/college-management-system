@@ -24,7 +24,6 @@ button[type="submit"]:hover {
 
 .form {
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
   width: 670px;
   margin: 30px auto;
@@ -36,7 +35,6 @@ input.ng-invalid.ng-touched {
 small {
   color: red;
 }
-#pass-field{
+#pass-field {
   border-width: 0px;
 }
-

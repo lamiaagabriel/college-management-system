@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   admins = [
     { name: 'Project Team', pass: '12345' },
     // { name: 'Marwa', password: '512001' },
-    // { name: 'Admin', password: 'Admin' },
+    { name: 'admin', password: 'admin' },
   ];
   imgSource: string = '../../assets/admin.png';
 

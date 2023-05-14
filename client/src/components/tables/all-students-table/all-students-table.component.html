@@ -1,89 +1,161 @@
-<div class="mt-4 shadow-md rounded-md overflow-hidden mat-elevation-z1">
-  <table mat-table [dataSource]="dataSource">
-    <!-- SSN Column -->
-    <ng-container matColumnDef="ssn">
-      <th mat-header-cell *matHeaderCellDef>SSN</th>
-      <td mat-cell *matCellDef="let element">{{ element.ssn }}</td>
-    </ng-container>
+<div class="mat-elevation-z1 mt-4 shadow-md rounded-md">
+  <div class="overflow-auto">
+    <table mat-table [dataSource]="dataSource">
+      <!-- SSN Column -->
+      <ng-container matColumnDef="ssn">
+        <th mat-header-cell *matHeaderCellDef>SSN</th>
+        <td mat-cell *matCellDef="let element">{{ element.ssn }}</td>
+      </ng-container>
 
-    <!-- Student Column -->
-    <ng-container matColumnDef="student">
-      <th mat-header-cell *matHeaderCellDef>Personal Info</th>
-      <td
-        mat-cell
-        *matCellDef="let element"
-        class="w-full inline-flex justify-start items-center grow gap-4"
-      >
-        <div class="w-20">
-          <img
-            [src]="
-              'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
-              element.image +
-              '.jpg'
-            "
-            [alt]="element.name"
-            class="aspect-square w-full object-cover object-center rounded-full"
-          />
-        </div>
+      <!-- Student Column -->
+      <ng-container matColumnDef="student">
+        <th mat-header-cell *matHeaderCellDef>Personal Info</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="w-full inline-flex justify-start items-center grow gap-4"
+        >
+          <div class="w-20">
+            <img
+              [src]="
+                'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
+                element.image +
+                '.jpg'
+              "
+              [alt]="element.name"
+              class="aspect-square w-full object-cover object-center rounded-full"
+            />
+          </div>
 
-        <div>
-          <h1 class="font-semibold">{{ element.name }}</h1>
-          <p class="text-xs text-slate-400">
-            {{ element.email }}
-          </p>
-          <p class="text-xs text-slate-400">
-            {{ element.phone_number }}
-          </p>
-        </div>
-      </td>
-    </ng-container>
+          <div>
+            <h1 class="font-semibold">{{ element.name }}</h1>
+            <p class="text-xs text-slate-400">
+              {{ element.email }}
+            </p>
+            <p class="text-xs text-slate-400">
+              {{ element.phone_number }}
+            </p>
+          </div>
+        </td>
+      </ng-container>
 
-    <!-- Department Column -->
-    <ng-container matColumnDef="department">
-      <th mat-header-cell *matHeaderCellDef>Department</th>
-      <td mat-cell *matCellDef="let element">{{ element.department }}</td>
-    </ng-container>
+      <!-- Department Column -->
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef>Department</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+        >
+          {{ element.department }}
+        </td>
+      </ng-container>
 
-    <!-- FEES Column -->
-    <ng-container matColumnDef="fees">
-      <th mat-header-cell *matHeaderCellDef>FEES</th>
-      <td mat-cell *matCellDef="let element">
-        <span
-          [class]="
-            (element.fees === '1'
-              ? 'bg-green-100 text-green-800'
-              : 'bg-red-100 text-red-800') +
-            'inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium'
+      <!-- FEES Column -->
+      <ng-container matColumnDef="fees">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           "
-          >{{ element.fees === '1' ? "Paid" : "Unpaid" }}
-        </span>
-      </td>
-    </ng-container>
+        >
+          FEES
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          <span
+            [class]="
+              (element.fees === '1'
+                ? 'bg-green-100 text-green-800'
+                : 'bg-red-100 text-red-800') +
+              'inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium'
+            "
+            >{{ element.fees === "1" ? "Paid" : "Unpaid" }}
+          </span>
+        </td>
+      </ng-container>
 
-    <!-- Created At Column -->
-    <ng-container matColumnDef="created_at">
-      <th mat-header-cell *matHeaderCellDef>Created At</th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.created_at | date : "mediumDate" }}
-      </td>
-    </ng-container>
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let element">
-        <div class="flex justify-center items-center gap-4">
-          <button mat-button (click)="onShow(element.ssn)">Show</button>
-          <button mat-button (click)="onEdit(element.ssn)">Edit</button>
-          <button mat-button (click)="onDelete(element.ssn)"
-          class="hover:bg-red-500">Delete</button>
-        </div>
-      </td>
-    </ng-container>
+      <!-- Created At Column -->
+      <ng-container matColumnDef="created_at">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          Created At
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          {{ element.created_at | date : "mediumDate" }}
+        </td>
+      </ng-container>
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          Actions
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          <div class="flex justify-center items-center gap-4">
+            <button mat-button (click)="onShow(element.ssn)">Show</button>
+            <button mat-button (click)="onEdit(element.ssn)">Edit</button>
+            <button
+              mat-button
+              (click)="onDelete(element.ssn)"
+              class="hover:bg-red-500"
+            >
+              Delete
+            </button>
+          </div>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons

@@ -15,8 +15,14 @@
           </p>
         </div>
 
-        <button class="addstudent" mat-stroked-button (click)="AddStudentForm()">Add Student</button>
-        <button mat-stroked-button (click)="AddCourseDegreeForm()">Add Student Degree</button>
+        <div class="flex justify-between items-center gap-4">
+          <button mat-stroked-button (click)="AddStudentForm()">
+            Add Student
+          </button>
+          <button mat-stroked-button (click)="AddCourseDegreeForm()">
+            Add Student Degree
+          </button>
+        </div>
       </div>
 
       <app-all-students-table></app-all-students-table>

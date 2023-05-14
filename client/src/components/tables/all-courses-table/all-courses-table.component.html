@@ -1,44 +1,145 @@
-<div class="mt-4 shadow-md rounded-md overflow-hidden mat-elevation-z1">
-  <table mat-table [dataSource]="dataSource">
-    <!-- Course Column -->
-    <!-- department Column -->
-    <ng-container matColumnDef="course">
-      <th mat-header-cell *matHeaderCellDef>Course Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
+<div class="mat-elevation-z1 mt-4 shadow-md rounded-md">
+  <div class="overflow-auto">
+    <table mat-table [dataSource]="dataSource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+        >
+          {{ element.id }}
+        </td>
+      </ng-container>
 
-    <!-- year Column -->
-    <ng-container matColumnDef="year">
-      <th mat-header-cell *matHeaderCellDef>Year</th>
-      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
-    </ng-container>
+      <!-- Course Column -->
+      <ng-container matColumnDef="course">
+        <th mat-header-cell *matHeaderCellDef>Course Name</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+        >
+          {{ element.name }}
+        </td>
+      </ng-container>
 
-    <!-- semester Column -->
-    <ng-container matColumnDef="semester">
-      <th mat-header-cell *matHeaderCellDef>Semester</th>
-      <td mat-cell *matCellDef="let element">{{ element.semester }}</td>
-    </ng-container>
+      <!-- Department Column -->
+      <ng-container matColumnDef="department">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+        >
+          Department
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
+        >
+          {{ element.department }}
+        </td>
+      </ng-container>
 
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Actions</th>
-      <td mat-cell *matCellDef="let element">
-        <div class="flex justify-center items-center gap-4">
-          <button mat-button (click)="onEdit(element.id)">Edit</button>
-          <button
-            mat-button
-            (click)="onDelete(element.id)"
-            class="hover:bg-red-500"
-          >
-            Delete
-          </button>
-        </div>
-      </td>
-    </ng-container>
+      <!-- year Column -->
+      <ng-container matColumnDef="year">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          Year
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          {{ element.year }}
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+      <!-- semester Column -->
+      <ng-container matColumnDef="semester">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          Semester
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          {{ element.semester }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          Actions
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          "
+        >
+          <div class="flex justify-center items-center gap-4">
+            <button mat-button (click)="onEdit(element.id)">Edit</button>
+            <button
+              mat-button
+              (click)="onDelete(element.id)"
+              class="hover:bg-red-500"
+            >
+              Delete
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
 
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"

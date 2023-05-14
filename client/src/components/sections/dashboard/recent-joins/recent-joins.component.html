@@ -1,0 +1,56 @@
+<div class="bg-white shadow rounded-lg overflow-hidden p-6 space-y-6">
+  <div class="flex justify-between items-end gap-4">
+    <div class="flex flex-col space-y-1.5">
+      <h3 class="text-lg font-semibold leading-none tracking-tight">
+        Recent Joins
+      </h3>
+      <p class="text-sm text-muted-foreground">
+        You've got {{ students.length }} new students this month.
+      </p>
+    </div>
+
+    <a
+      routerLink="/students"
+      class="inline-flex items-center gap-2 text-primary"
+      ><span>read more </span
+      ><lucide-angular
+        name="arrow-right"
+        size="14"
+        class="mt-1"
+      ></lucide-angular>
+    </a>
+  </div>
+
+  <div class="space-y-4">
+    <div
+      *ngFor="let student of students"
+      class="flex justify-between items-center gap-4"
+    >
+      <div class="flex justify-between items-start gap-4">
+        <div
+          class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+        >
+          <img
+            class="aspect-square h-full w-full"
+            [src]="
+              student.image
+                ? 'https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/' +
+                  student.image +
+                  '.jpg'
+                : 'https://github.com/shadcn.png'
+            "
+            [alt]="student.name"
+          />
+        </div>
+        <div>
+          <p>{{ student.name }}</p>
+          <p class="text-sm text-muted-foreground">{{ student.email }}</p>
+        </div>
+      </div>
+
+      <span class="text-sm text-muted-foreground">
+        {{ this.getFormat(student.created_at.toString()) }}
+      </span>
+    </div>
+  </div>
+</div>

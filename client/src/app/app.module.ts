@@ -26,7 +26,11 @@ import {
   FooterComponent,
 } from '@/components/layout';
 
-import { StatsComponent } from '@/components/sections/dashboard';
+import {
+  StatsComponent,
+  RecentProfessorsComponent,
+  RecentJoinsComponent,
+} from '@/components/sections/dashboard';
 import {
   AddCourseDialogComponent,
   AddProfessorDialogComponent,
@@ -34,7 +38,7 @@ import {
   EditStudentDialogComponent,
   EditProfessorDialogComponent,
   EditCourseDialogComponent,
-  AddStudentdegreeDialogComponent
+  AddStudentdegreeDialogComponent,
 } from '@/components/dialogs';
 import {
   AllCoursesTableComponent,
@@ -65,17 +69,22 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FooterComponent,
 
     StatsComponent,
+    RecentProfessorsComponent,
+    RecentJoinsComponent,
 
     AddCourseDialogComponent,
     AddProfessorDialogComponent,
     AddStudentDialogComponent,
+    AddStudentdegreeDialogComponent,
+
     EditStudentDialogComponent,
     EditProfessorDialogComponent,
-    AddStudentdegreeDialogComponent,
+    EditCourseDialogComponent,
+
     AllCoursesTableComponent,
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
-    EditCourseDialogComponent,
+
     ErrorPageComponent,
   ],
   imports: [
