@@ -1,22 +1,30 @@
-<header class="bg-gray-300">
-  <div class="container py-4 flex items-center justify-between mx-auto">
+<header class="bg-white border-b border-b-slate-100 shadow-sm">
+  <div class="container flex items-center justify-between mx-auto">
+    <nav class="flex space-x-8 text-sm sm:text-lg md:text-xl" aria-label="Tabs">
+      <a
+        *ngFor="let navLink of navLinks"
+        [routerLink]="navLink.to"
+        class="py-6 flex justify-between items-center gap-2 text-gray-500 hover:text-gray-800 font-medium text-sm rounded-md"
+      >
+        <lucide-angular [name]="navLink.icon" size="18"></lucide-angular>
+        <span>{{ navLink.title }} </span>
+      </a>
+    </nav>
 
-    <a
-      class="options"
-      *ngFor="let navLink of navLinks"
-      [routerLink]="navLink.to"
-      >{{ navLink.title }}</a
+    <button
+      [matMenuTriggerFor]="menu"
+      aria-label="Usermenu"
+      class="w-10 h-10 rounded-full relative cursor-pointer"
     >
-
-    <button [matMenuTriggerFor]="menu" aria-label="Usermenu" class="w-14 h-14 rounded-full avatar">
       <mat-icon *ngIf="!avatar">account_circle</mat-icon>
-        <img *ngIf="avatar" [src]="avatar" class=" object-cover object-center w-14 h-14 rounded-full "/>  
+      <img
+        *ngIf="avatar"
+        src="../../../assets/Faculty_Logo.png"
+        class="object-cover object-center w-10 h-10 rounded-full absolute left-[-2px] bottom-[-3px]"
+      />
     </button>
     <mat-menu #menu="matMenu">
-      <label mat-menu-item disabled>
-        ID : {{id}}
-      </label>
-      <a mat-menu-item routerLink="">
+      <a mat-menu-item (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>

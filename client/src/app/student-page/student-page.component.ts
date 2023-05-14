@@ -13,21 +13,24 @@ export class StudentPageComponent implements OnInit {
   ssn: any;
   // When page reload
   state: any;
+  hide: boolean = false;
   constructor(private router: Router) {
     // Get the ssn from all-students-table components
     this.state = this.router.getCurrentNavigation()?.extras.state;
   }
-
+  
   async ngOnInit() {
+    this.hide = this.state.hide;
     this.ssn = this.state.ssn;
+    // console.log(this.hide);
     // Fetch student info
-    const res = await fetch(`http://localhost:3000/studentData/${this.ssn}`, {
+    const res = await fetch(`http://localhost:3000/api/studentData/${this.ssn}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     }).then((res) => res.json());
-    
+
     this.students = res;
     if (this.students[0] != undefined) {
       this.studentInfo.image = `https://res.cloudinary.com/dnbruhgqr/image/upload/v1683030639/PersonalPhotos/${this.students[0]['image']}`;
@@ -53,7 +56,7 @@ export class StudentPageComponent implements OnInit {
   // function for getting student courses passing the semester as parameter
   async getCourses(Semester: any) {
     const res = await fetch(
-      `http://localhost:3000/studentCourses/${this.selected}/${Semester}/${this.ssn}`,
+      `http://localhost:3000/api/studentCourses/${this.selected}/${Semester}/${this.ssn}`,
       {
         method: 'GET',
         headers: {
@@ -97,7 +100,7 @@ export class StudentPageComponent implements OnInit {
     'Percentage',
   ];
   dataSource = new MatTableDataSource<PeriodicElement>(firstTerm);
-  hide: boolean = false;
+
   toggleChecked: any = ['mat-button-toggle-checked', ''];
   studentInfo = {
     image: '',
@@ -125,6 +128,10 @@ export class StudentPageComponent implements OnInit {
   changeCheck2() {
     if (this.toggleChecked[1] === '') this.toggleChecked.reverse();
     this.getCourses('2');
+  }
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 }
 

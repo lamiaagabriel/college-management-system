@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddStudentDialogComponent } from '@/components/dialogs';
-
+import { AddStudentdegreeDialogComponent } from '@/components/dialogs';
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
@@ -9,7 +9,10 @@ import { AddStudentDialogComponent } from '@/components/dialogs';
 })
 export class StudentsComponent {
   constructor(public dialog: MatDialog) {}
-  openForm() {
+  AddStudentForm() {
     this.dialog.open(AddStudentDialogComponent);
+  }
+  AddCourseDegreeForm() {
+    this.dialog.open(AddStudentdegreeDialogComponent);
   }
 }

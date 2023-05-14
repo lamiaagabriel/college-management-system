@@ -32,6 +32,7 @@ export class AllStudentsTableComponent {
         console.log('Error');
         return;
       }
+      // console.log(data);
       this.dataSource = new MatTableDataSource<Student[]>(data);
       this.dataSource.paginator = this.paginator;
     });
@@ -74,6 +75,6 @@ export class AllStudentsTableComponent {
     location.reload();
   }
   onShow(ssn: any){
-    this.router.navigate(['/StudentPage'], { state: { ssn: ssn } });
+    this.router.navigate(['/StudentPage'], { state: { ssn: ssn, hide: true } });
   }
 }

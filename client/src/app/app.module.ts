@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { LucideAngularModule } from 'lucide-angular';
+import { icons } from 'lucide-angular';
 
 // Pages
 import { DashboardComponent } from '@/pages/dashboard/dashboard.component';
@@ -32,6 +34,7 @@ import {
   EditStudentDialogComponent,
   EditProfessorDialogComponent,
   EditCourseDialogComponent,
+  AddStudentdegreeDialogComponent
 } from '@/components/dialogs';
 import {
   AllCoursesTableComponent,
@@ -67,6 +70,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddStudentDialogComponent,
     EditStudentDialogComponent,
     EditProfessorDialogComponent,
+    AddStudentdegreeDialogComponent,
     AllCoursesTableComponent,
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
@@ -79,6 +83,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule,
     MatMenuModule,
+    LucideAngularModule.pick(icons),
   ],
   providers: [],
   bootstrap: [AppComponent],

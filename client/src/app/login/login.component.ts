@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
       let obj = this.admins.find(
         (o) => o.name === this.uname_id && o.pass === this.password
       );
-      if (obj != undefined) this.router.navigate(['dashbord']);
+      if (obj != undefined){
+        this.router.navigate(['dashbord']);
+        localStorage.setItem('token', 'true');
+      } 
       else this.error = "This admin is not found";
     }else{
       const res = await fetch(`http://localhost:3000/passwords/${this.uname_id}/${this.password}`, {
@@ -48,7 +51,10 @@ export class LoginComponent implements OnInit {
       }).then((res) => res.json());
       
       if (res.results.length == 0) this.error = 'This user is not found';
-      else this.router.navigate(['/StudentPage'], { state: { ssn: this.uname_id } });
+      else{
+        this.router.navigate(['/StudentPage'], { state: { ssn: this.uname_id } });
+        localStorage.setItem('token', 'true');
+      } 
     }
   }
 }
