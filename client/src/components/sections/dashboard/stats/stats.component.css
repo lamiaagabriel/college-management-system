@@ -29,3 +29,11 @@
 .stat:nth-child(4) .wrap:after {
   background: linear-gradient(81.67deg, #ff647c 0%, #1f5dc5 100%);
 }
+
+#StudentsDetails{
+  top:-13px
+}
+#StudentsNumber{
+  margin-left: 30px;
+  margin-top: 10px;
+}

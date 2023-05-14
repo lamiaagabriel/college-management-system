@@ -19,6 +19,7 @@ import coursesRouter from "./routes/courses.js"
 import studentData from "./routes/studentsData.js"
 import studentCourses from "./routes/studentCourses.js"
 import userpasswords from  "./routes/passwords.js"
+import dashboardRouter from "./routes/dashbord.js"
 
 const app = express()
 
@@ -37,6 +38,7 @@ app.use("/api/courses", coursesRouter)
 app.use("/studentData", studentData)
 app.use("/studentCourses", studentCourses)
 app.use("/passwords", userpasswords)
+app.use("/api/dashbord", dashboardRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
