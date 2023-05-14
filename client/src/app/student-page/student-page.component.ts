@@ -13,13 +13,16 @@ export class StudentPageComponent implements OnInit {
   ssn: any;
   // When page reload
   state: any;
+  hide: boolean = false;
   constructor(private router: Router) {
     // Get the ssn from all-students-table components
     this.state = this.router.getCurrentNavigation()?.extras.state;
   }
-
+  
   async ngOnInit() {
+    this.hide = this.state.hide;
     this.ssn = this.state.ssn;
+    // console.log(this.hide);
     // Fetch student info
     const res = await fetch(`http://localhost:3000/api/studentData/${this.ssn}`, {
       method: 'GET',
@@ -97,7 +100,7 @@ export class StudentPageComponent implements OnInit {
     'Percentage',
   ];
   dataSource = new MatTableDataSource<PeriodicElement>(firstTerm);
-  hide: boolean = false;
+
   toggleChecked: any = ['mat-button-toggle-checked', ''];
   studentInfo = {
     image: '',
@@ -126,7 +129,7 @@ export class StudentPageComponent implements OnInit {
     if (this.toggleChecked[1] === '') this.toggleChecked.reverse();
     this.getCourses('2');
   }
-  logOut(){
+  logOut() {
     localStorage.clear();
     this.router.navigate(['']);
   }

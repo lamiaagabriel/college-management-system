@@ -1,5 +1,5 @@
 <div class="container">
-      <a mat-menu-item id="Logout" (click)="logOut()">
+      <a mat-menu-item class="Logout" id="Logout" (click)="logOut()" [hidden]="hide">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
@@ -42,7 +42,7 @@
       </mat-form-field>
     </header>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [hidden]="hide">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->

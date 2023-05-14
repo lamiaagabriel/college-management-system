@@ -76,6 +76,6 @@ export class AllStudentsTableComponent {
     location.reload();
   }
   onShow(ssn: any){
-    this.router.navigate(['/StudentPage'], { state: { ssn: ssn } });
+    this.router.navigate(['/StudentPage'], { state: { ssn: ssn, hide: true } });
   }
 }
