@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
           },
         }
       ).then((res) => res.json());
-
       if (res.results.length == 0) this.error = 'This user is not found';
       else {
         this.router.navigate(['/StudentPage'], {
