@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { navLinks } from '../layout.component';
 @Component({
   selector: 'Header',
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
-
-  navLinks: { to: string; title: string }[] = [
-    { to: '/dashbord', title: 'Home' },
-    { to: '/courses', title: 'Courses' },
-    { to: '/students', title: 'Students' },
-    { to: '/professors', title: 'Professors' },
-  ];
+  navLinks: typeof navLinks = navLinks;
+  isActive: string = navLinks[0].to;
 
   username = 'Marwa';
   id = '12345';
