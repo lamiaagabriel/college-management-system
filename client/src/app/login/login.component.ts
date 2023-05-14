@@ -11,8 +11,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {}
 
-  error:string = '';
-  datalabel: string = 'Username';
+  error: string = '';
+  datalabel: string = 'Name';
   password: string = '12345';
   uname_id: string = 'Project Team';
   admins = [
@@ -20,41 +20,52 @@ export class LoginComponent implements OnInit {
     // { name: 'Marwa', password: '512001' },
     // { name: 'Admin', password: 'Admin' },
   ];
+  imgSource: string = '../../assets/admin.png';
 
   @ViewChild('myForm') form: any = NgForm;
 
   async onSubmit() {
     let admin = document.querySelector('input[id="admin"]:checked'); // That returns null if the admin radio button is not selected
-    if (this.uname_id === '' || this.password === ''){
+    if (this.uname_id === '' || this.password === '') {
       this.error = 'Fill all data';
       return;
     }
-    
+
     if (admin !== null) {
-      this.uname_id = this.form.value.username;
+      this.uname_id = this.form.value.adminName;
       this.password = this.form.value.pass;
 
       let obj = this.admins.find(
         (o) => o.name === this.uname_id && o.pass === this.password
       );
-      if (obj != undefined){
+      if (obj != undefined) {
         this.router.navigate(['dashbord']);
         localStorage.setItem('token', 'true');
-      } 
-      else this.error = "This admin is not found";
-    }else{
-      const res = await fetch(`http://localhost:3000/passwords/${this.uname_id}/${this.password}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then((res) => res.json());
-      
+      } else this.error = 'This admin is not found';
+    } else {
+      const res = await fetch(
+        `http://localhost:3000/passwords/${this.uname_id}/${this.password}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      ).then((res) => res.json());
+
       if (res.results.length == 0) this.error = 'This user is not found';
-      else{
-        this.router.navigate(['/StudentPage'], { state: { ssn: this.uname_id } });
+      else {
+        this.router.navigate(['/StudentPage'], {
+          state: { ssn: this.uname_id },
+        });
         localStorage.setItem('token', 'true');
-      } 
+      }
     }
+  }
+
+  change() {
+    let admin = document.querySelector('input[id="admin"]:checked'); // That returns null if the admin radio button is not selected
+    if (admin !== null) this.imgSource = '../../assets/admin.png';
+    else this.imgSource = '../../assets/student.png';
   }
 }
