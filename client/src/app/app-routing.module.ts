@@ -9,6 +9,7 @@ import { ProfessorsComponent } from '@/pages/professors/professors.component';
 import { LoginComponent } from '@/pages/login/login.component';
 import { StudentPageComponent } from '@/pages/student-page/student-page.component';
 import { AuthGuard } from '@/services/shared/auth.guard';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -30,6 +31,11 @@ const routes: Routes = [
     component: StudentPageComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: '**',
+    component: ErrorPageComponent,
+  },
+  
 
   // Any another path put with it (canActivate: [AuthGuard]) like above
 ];

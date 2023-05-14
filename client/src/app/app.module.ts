@@ -42,6 +42,7 @@ import {
   AllStudentsTableComponent,
 } from '@/components/tables';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 // Services
 
@@ -75,6 +76,7 @@ import { HttpClientModule } from '@angular/common/http';
     AllProfessorsTableComponent,
     AllStudentsTableComponent,
     EditCourseDialogComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
