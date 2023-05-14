@@ -3,6 +3,9 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {Course} from '@/server/types/api'
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { EditCourseDialogComponent } from '@/components/dialogs';
 
 
 @Component({
@@ -13,7 +16,7 @@ export class AllCoursesTableComponent {
   displayedColumns: string[] = ['course', 'year', 'semester', 'actions'];
   dataSource: any;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService,public dialog: MatDialog, private router: Router) {}
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngOnInit() {
@@ -29,9 +32,22 @@ export class AllCoursesTableComponent {
     });
   }
 
-  onEdit(ssn: string) {
-    console.log('Edit');
-    console.log(ssn);
+  onEdit(ID: string) {
+    this.api.get(`courses/${ID}`).subscribe((data: any) => {
+      if (data.errors) {
+        console.log('Error');
+        return;
+      }
+      this.dialog.open(EditCourseDialogComponent,{
+        data:{
+          id:data.id,
+          coursename:data.name,
+          AcademicYear: data.year,
+          Semester : data.semester,
+          Department : data.department,
+        }
+       });
+    });
   }
 
   onDelete(ssn: string) {

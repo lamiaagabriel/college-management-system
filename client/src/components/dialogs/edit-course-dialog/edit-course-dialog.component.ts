@@ -1,15 +1,17 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { UploadImageService } from '@/services/upload-image/upload-image.service';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { FormControl, NgForm, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-course-dialog',
-  templateUrl: './add-course-dialog.component.html',
-  styleUrls: ['./add-course-dialog.component.css']
+  selector: 'app-edit-course-dialog',
+  templateUrl: './edit-course-dialog.component.html',
+  styleUrls: ['./edit-course-dialog.component.css']
 })
-export class AddCourseDialogComponent {
-  constructor(
-    private matDialogRef: MatDialogRef<AddCourseDialogComponent>,
+export class EditCourseDialogComponent {
+    constructor(
+    private matDialogRef: MatDialogRef<EditCourseDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   coursename: string | null = null;
@@ -21,17 +23,26 @@ export class AddCourseDialogComponent {
   
   @ViewChild('myForm') form: any = NgForm;
 
+  ngOnInit(): void {
+    console.log(this.data);
+      this.coursename = this.data.coursename;
+      this.AcademicYear = this.data.AcademicYear.toString();
+      this.Semester = this.data.Semester.toString();
+      this.ID = this.data.id;
+      this.Department = this.data.Depyearartment;
+  }
+
   async onSubmit() {
     // Setting request attribtues
     this.coursename = this.form.value.CourseDetails.coursename;
-    this.AcademicYear = this.form.value.year;
+    this.AcademicYear = this.form.value.AcademicYear;
     this.Semester = this.form.value.semester;
     this.ID = this.form.value.CourseDetails.courseID;
-    this.Department = this.form.value.Department;
+
 
     // Sending request
     const res = await fetch('http://localhost:3000/api/courses', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,10 +56,6 @@ export class AddCourseDialogComponent {
     }).then((res) => res.json());
     this.response = res.results;
     console.log(this.response);
-    if (this.response !== "Error in creating data within Database.")
-    {
-      location.reload();
-    }
   }
   onClose() {
     this.matDialogRef.close();
