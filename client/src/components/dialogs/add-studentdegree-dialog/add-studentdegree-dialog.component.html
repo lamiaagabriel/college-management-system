@@ -1,0 +1,68 @@
+<div class="form">
+    <h2 id="registration" class = "mb-4">Adding Course</h2>
+    
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+      <div class="inline mr-2" ngModelGroup="CourseDetails" #CourseDetails="ngModelGroup">
+        <mat-form-field appearance="outline">
+          <mat-label>Course ID</mat-label>
+          <input
+            matInput
+            type="text"
+            name="CourseID"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="ml-2" appearance="outline">
+          <mat-label>Student ID</mat-label>
+          <input
+            matInput
+            type="text"
+            name="StudentID"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="ml-2" appearance="outline">
+          <mat-label>Student Grade</mat-label>
+          <input
+            matInput
+            type="text"
+            name="StudentGrade"
+            ngModel
+            required
+            #fname="ngModel"
+          />
+        </mat-form-field>
+
+      </div>
+      <div>
+        <small *ngIf="CourseDetails.invalid && CourseDetails.touched"
+          >Some of the required fields does not have valid value.</small
+        >
+      </div>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        value="Submit"
+        id="btn"
+        [hidden]="!myForm.valid"
+      >
+        Add Degree
+      </button>
+      <button mat-raised-button disabled class="disabled" [hidden]="myForm.valid">
+        Add Degree
+      </button>
+      <button mat-raised-button color="primary" type="button" (click)="onClose()">
+        Close
+      </button>
+      <p [class] = "response == '' ? '' : response == 'Inserted Successfully' ? 'text-green-400' : 'text-red-400' "> {{response }}</p>
+    </form>
+  </div>
+  
