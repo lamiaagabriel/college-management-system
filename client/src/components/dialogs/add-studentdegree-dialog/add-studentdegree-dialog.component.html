@@ -3,28 +3,19 @@
     
     <form (ngSubmit)="onSubmit()" #myForm="ngForm">
       <div class="inline mr-2" ngModelGroup="CourseDetails" #CourseDetails="ngModelGroup">
+
         <mat-form-field appearance="outline">
-          <mat-label>Course ID</mat-label>
-          <input
-            matInput
-            type="text"
-            name="CourseID"
-            ngModel
-            required
-            #fname="ngModel"
-          />
+          <mat-label>Course</mat-label>
+          <mat-select name="CourseID" ngModel>
+            <mat-option *ngFor="let course of Courses" value="{{course.id}}">{{course.id + " | "+ course.name}}</mat-option>
+          </mat-select>
         </mat-form-field>
-  
+
         <mat-form-field class="ml-2" appearance="outline">
-          <mat-label>Student ID</mat-label>
-          <input
-            matInput
-            type="text"
-            name="StudentID"
-            ngModel
-            required
-            #fname="ngModel"
-          />
+          <mat-label>Student</mat-label>
+          <mat-select name="StudentID" ngModel>
+            <mat-option *ngFor="let student of Studens" value="{{student.ssn}}">{{student.name}}</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field class="ml-2" appearance="outline">

@@ -1,23 +1,45 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild , OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from '@/services/api/api.service';
 @Component({
   selector: 'app-add-studentdegree-dialog',
   templateUrl: './add-studentdegree-dialog.component.html',
   styleUrls: ['./add-studentdegree-dialog.component.css']
 })
 export class AddStudentdegreeDialogComponent {
+  
   constructor(
     private matDialogRef: MatDialogRef<AddStudentdegreeDialogComponent>,
+    private api: ApiService,
   ) {}
 
   CourseID: string | null = null;
   StudentID: String | null = null;
   StudentGrade:  number| null = null;
   response:String = "";
-  
+  Courses: Array<any> = [];
+  Studens: Array<any> = [];
   @ViewChild('myForm') form: any = NgForm;
+  ngOnInit(): void {
+    this.api.get('courses').subscribe((data: any) => {
+      if (data.errors) {
+        console.log('Error');
+        return;
+      }
+      this.Courses = JSON.parse(JSON.stringify(data));
+    });
 
+    this.api.get('students').subscribe((data: any) => {
+      if (data.errors) {
+        console.log('Error');
+        return;
+      }
+      this.Studens = JSON.parse(JSON.stringify(data));
+    });
+    
+  }
+  
   async onSubmit() {
     // Setting request attribtues
     this.CourseID = this.form.value.CourseDetails.CourseID;
@@ -44,6 +66,8 @@ export class AddStudentdegreeDialogComponent {
     }
   */
   }
+
+  
   onClose() {
     this.matDialogRef.close();
   }

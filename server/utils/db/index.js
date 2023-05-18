@@ -2,7 +2,7 @@ import mysql from "mysql2/promise"
 
 // Database Connection
 export const pool = mysql.createPool(
-  'mysql://v2t3gqjsihqtvxi4x1jk:pscale_pw_lUaTvSb7GipRLmD507oqVGHzfIoe3XGFv6cjf9utzai@aws.connect.psdb.cloud/collegesystem?ssl={"rejectUnauthorized":true}'
+  'mysql://9as8nx5c3ebu7ql3u4ix:pscale_pw_MVq7YVslwZiUEjjhBb8CvUgZwUX3iI0HSaX0URhstKz@aws.connect.psdb.cloud/collegesystem?ssl={"rejectUnauthorized":true}'
 )
 import { findMany, findOne } from "./_read.js"
 import { createOne } from "./_create.js"
