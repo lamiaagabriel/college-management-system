@@ -1,4 +1,19 @@
+## Screenshots :camera:
 <details>
-  <summary>Click me</summary>
-   
+  <summary>Log in</summary>
 </details>
+
+<details>
+  <summary>Students Dashboard</summary>
+</details>
+
+<details>
+  <summary>Add Student</summary>
+</details>
+
+<details>
+  <summary>Edit Student</summary>
+</details>
+
+
+
