@@ -20,6 +20,7 @@
 
 <details>
   <summary>Add Student</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684523294/Github%20ScreenShots/addstudent_h7ougt.png"/>
 </details>
 
 <details>
