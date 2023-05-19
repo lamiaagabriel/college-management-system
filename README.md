@@ -25,7 +25,28 @@
 <details>
   <summary>Edit Student</summary>
   <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684521699/Github%20ScreenShots/editstudent_lfhceh.png"/>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/editstu1_e6weue.png"/>
 </details>
 
+<details>
+  <summary>Show Student</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/showstu2_sxjrsd.png"/>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/showstu1_qgs6qf.png"/>
+</details>
 
+<details>
+  <summary>Professors Dashboard</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/profdash_d6s9jm.png"/>
+</details>
+
+<details>
+  <summary>Add Professor</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522213/Github%20ScreenShots/addprof_z7tm4z.png"/>
+ 
+</details>
+
+<details>
+  <summary>Edit Professor</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/editprof_qpenkv.png"/>
+</details>
 
