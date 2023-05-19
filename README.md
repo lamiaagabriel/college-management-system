@@ -50,3 +50,19 @@
   <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/editprof_qpenkv.png"/>
 </details>
 
+<details>
+  <summary>Courses Dashboard</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522445/Github%20ScreenShots/coursedash_rinwgd.png"/>
+</details>
+
+<details>
+  <summary>Add Course</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522445/Github%20ScreenShots/addcourse_uulcrl.png"/>
+ 
+</details>
+
+<details>
+  <summary>Edit Course</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522445/Github%20ScreenShots/editcourse_dfqcce.png"/>
+</details>
+
