@@ -54,7 +54,7 @@ export class EditStudentDialogComponent {
   Password: string | null = null;
   DOB: string = '';
   serializedDate = new FormControl(
-  new Date(this.data.dateofbirth?.substr(0,4),this.data.dateofbirth?.substr(5,2) - 1,this.data.dateofbirth?.substr(8,2)).toISOString()); // this.serializedDate.value
+  new Date(this.data.dateofbirth?.substr(0,4), this.data.dateofbirth?.substr(5,2) - 1, +this.data.dateofbirth?.substr(8,2) + 1).toISOString()); // this.serializedDate.value
   Address: string | null = null;
   fullData: boolean = true;
   genders: string[] = ['male', 'female'];
