@@ -1,9 +1,10 @@
 import mysql from "mysql2/promise"
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Database Connection
-export const pool = mysql.createPool(
-  'mysql://9as8nx5c3ebu7ql3u4ix:pscale_pw_MVq7YVslwZiUEjjhBb8CvUgZwUX3iI0HSaX0URhstKz@aws.connect.psdb.cloud/collegesystem?ssl={"rejectUnauthorized":true}'
-)
+export const pool = mysql.createPool(process.env.DATABASE_URL);
 import { findMany, findOne } from "./_read.js"
 import { createOne } from "./_create.js"
 import { deleteOne } from "./_delete.js"
