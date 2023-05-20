@@ -24,6 +24,12 @@
 </details>
 
 <details>
+  <summary>Add Student Degree</summary>
+  <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522214/Github%20ScreenShots/studegree1_z68jqc.png"/>
+   <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522213/Github%20ScreenShots/studeg2_hlsthd.png"/>
+</details>
+
+<details>
   <summary>Edit Student</summary>
   <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684521699/Github%20ScreenShots/editstudent_lfhceh.png"/>
   <img src="https://res.cloudinary.com/dnbruhgqr/image/upload/v1684522212/Github%20ScreenShots/editstu1_e6weue.png"/>
