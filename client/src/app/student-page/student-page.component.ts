@@ -40,13 +40,11 @@ export class StudentPageComponent implements OnInit {
       this.studentInfo.academicYear = String(this.students[0]['academic_year']);
       this.studentInfo.email = this.students[0]['email'];
       this.studentInfo.gender = this.students[0]['gender'];
-      this.studentInfo.DOB = String(this.students[0]['date_of_birth'])?.slice(
-        0,
-        10
-      );
+      let date = new Date(new Date(this.students[0]['date_of_birth']).setDate(new Date(this.students[0]['date_of_birth']).getDate()));
+      this.studentInfo.DOB = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
       this.studentInfo.specialist = this.students[0]['department'];
       this.studentInfo.fees =
-        this.students[0]['fees'] == '0' ? 'false' : 'true';
+      this.students[0]['fees'] == '0' ? 'false' : 'true';
     }
     this.selected = this.studentInfo.academicYear;
     // Fetch stuent courses
